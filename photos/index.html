@@ -119,14 +119,17 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="留言板">
-<meta property="og:url" content="http://yoursite.com/msgboard/index.html">
+  <meta name="description" content="相册  图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($script)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的相册">
+<meta property="og:url" content="http://yoursite.com/photos/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
+<meta property="og:description" content="相册  图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($script)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T02:31:49.947Z">
+<meta property="og:updated_time" content="2019-05-14T06:17:31.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="留言板">
+<meta name="twitter:title" content="我的相册">
+<meta name="twitter:description" content="相册  图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($script)">
 
 
 
@@ -136,7 +139,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/msgboard/">
+  <link rel="canonical" href="http://yoursite.com/photos/">
 
 
 
@@ -146,7 +149,7 @@
   };
 </script>
 
-  <title>留言板 | YyWang's Blog</title>
+  <title>我的相册 | YyWang's Blog</title>
   
 
 
@@ -200,6 +203,46 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
 
   
   
@@ -316,7 +359,7 @@
         
         
           
-          <li class="menu-item menu-item-photos">
+          <li class="menu-item menu-item-photos menu-item-active">
 
     
     
@@ -420,7 +463,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">留言板
+<h1 class="post-title" itemprop="name headline">我的相册
 
 </h1>
 
@@ -440,7 +483,23 @@
       <div class="post-body">
         
         
-          
+          <p><link rel="stylesheet" href="../lib/album/ins.css"></p>
+<p><link rel="stylesheet" href="../lib/album/photoswipe.css"> </p>
+<p><link rel="stylesheet" href="../lib/album/default-skin/default-skin.css"> </p>
+<div class="photos-btn-wrap"><br>  <a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="external">相册</a><br></div><br><div class="instagram itemscope"><br>  <a href="http://yourbolg.com" target="_blank" class="open-ins">图片正在加载中…</a><br></div>
+
+<script>
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement('script')
+      document.getElementsByTagName('body')[0].appendChild($script)
+      $script.setAttribute('src', path)
+    }
+    setTimeout(function() {
+        loadScript('../lib/album/ins.js')
+    }, 0)
+  })()
+</script>
         
       </div>
       

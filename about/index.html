@@ -16,6 +16,10 @@
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
+
+  <script src="/js/src/photoswipe.min.js?v="></script>
+  <script src="/js/src/photoswipe-ui-default.min.js?v="></script>
+
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -37,6 +41,7 @@
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
 </style>
+
 
 
 
@@ -121,7 +126,7 @@
 <meta property="og:site_name" content="YyWang&#39;s Blog">
 <meta property="og:description" content="90后一枚程序员，2019届硕士毕业生，毕业后入职京东亦庄总部   热爱技术，对心理学有兴趣会看一些非专业的书（其实只在火车上看而已，看过高铭的几本）   宅的时候喜欢逛逛A站B站排行榜和鬼畜，A站的老司机、发条张、木鱼、刘老师……B站的纪录片、TESTV、董买买、影视飓风……都是我的最爱   偶尔玩玩游戏，年纪大了对这些逐渐不感冒了，和朋友一起玩比较多，LOL的TeamWE战队粉   时间多了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-11T06:59:08.544Z">
+<meta property="og:updated_time" content="2019-05-24T06:00:18.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我">
 <meta name="twitter:description" content="90后一枚程序员，2019届硕士毕业生，毕业后入职京东亦庄总部   热爱技术，对心理学有兴趣会看一些非专业的书（其实只在火车上看而已，看过高铭的几本）   宅的时候喜欢逛逛A站B站排行榜和鬼畜，A站的老司机、发条张、木鱼、刘老师……B站的纪录片、TESTV、董买买、影视飓风……都是我的最爱   偶尔玩玩游戏，年纪大了对这些逐渐不感冒了，和朋友一起玩比较多，LOL的TeamWE战队粉   时间多了">
@@ -196,6 +201,8 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
 
   
   
@@ -308,6 +315,23 @@
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-photos">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-image"></i> <br>相册</a>
+
+  </li>
 
       
       
@@ -380,6 +404,9 @@
       
       
     
+      
+      
+    
     
 
   
@@ -433,6 +460,9 @@
 </ul>
 <ul>
 <li>很多事总是以没时间为借口不了了之，所以用没时间的王先森嘲讽自己，喜欢的事就去做，想得太多最终都会一事无成</li>
+</ul>
+<ul>
+<li>欢迎各位大佬互相交流 <a href="mailto:sbsbjs@qq.com" target="_blank" rel="noopener">sbsbjs@qq.com</a></li>
 </ul>
 
         
@@ -505,7 +535,37 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           
@@ -772,7 +832,9 @@
       
 
       
-
+      
+      
+      
     </div>
   </aside>
   
@@ -787,7 +849,7 @@
       <div class="footer-inner">
         <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">YyWang</span>
 
@@ -803,6 +865,26 @@
 
 
 
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/15/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分钟 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
 
         
 <div class="busuanzi-count">
@@ -930,6 +1012,10 @@
   
   <script src="/js/scrollspy.js?v=7.1.0"></script>
 <script src="/js/post-details.js?v=7.1.0"></script>
+
+<script type="text/javascript" src="/js/src/photoswipe.min.js?v="></script>
+<script type="text/javascript" src="/js/src/photoswipe-ui-default.min.js?v="></script>
+
 
 
 
@@ -1317,6 +1403,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
