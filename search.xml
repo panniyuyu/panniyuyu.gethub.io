@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[知识点复习]]></title>
     <url>%2F2019%2F07%2F09%2F%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[整理一些在看项目时候遇到的小的知识点，先有个大概的映像，后续再补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（this）锁住的是该类的实例对象 代码块中（xxx.class）锁住的是类对象 volatile保证线程数据可见 transient 关键字不做序列化和反序列化操作 synchronized在方法中声名为什么还用线程安全的数据结构来存放变量该变量可能在其他地方被调用，如果该变量只在synchronized关键字声名在方法中使用，则无需使用线程安全的数据结构。 TPS （Transaction Per Second）服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束 QPS （Query Per Second）服务器每秒处理查询的次数，查询开始到返回结果结束 Git克隆分支命令git clone -b [分支名称] [git地址]]]></content>
+    <content type="text"><![CDATA[整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（this）锁住的是该类的实例对象 代码块中（xxx.class）锁住的是类对象 volatile保证线程数据可见 transient 关键字不做序列化和反序列化操作 synchronized在方法中声名为什么还用线程安全的数据结构来存放变量该变量可能在其他地方被调用，如果该变量只在synchronized关键字声名在方法中使用，则无需使用线程安全的数据结构。 TPS （Transaction Per Second）服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束 QPS （Query Per Second）服务器每秒处理查询的次数，查询开始到返回结果结束 Git克隆分支命令git clone -b [分支名称] [git地址] Idea配置TomcatRun-&gt;Edit Configurations-&gt;Telplates中配置后在该页面左上角添加-&gt;选中Tomcat的Deployment点击部署 Idea配置文件取消Unicode编码File-&gt;Setting-&gt;搜索file encoding-&gt;勾选Transparent native-to-ascii conversion]]></content>
   </entry>
   <entry>
     <title><![CDATA[第一篇博客]]></title>
