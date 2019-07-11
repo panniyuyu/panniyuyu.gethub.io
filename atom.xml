@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-11T03:36:20.988Z</updated>
+  <updated>2019-07-11T07:56:10.715Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringMVC</title>
+    <link href="http://yoursite.com/2019/07/11/SpringMVC/"/>
+    <id>http://yoursite.com/2019/07/11/SpringMVC/</id>
+    <published>2019-07-11T07:22:35.000Z</published>
+    <updated>2019-07-11T07:56:10.715Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SpringMVC配置"><a href="#SpringMVC配置" class="headerlink" title="SpringMVC配置"></a>SpringMVC配置</h2><p><em>配置文件&amp;注解&amp;Java类</em></p><h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4><ul><li><p><img src="/images/pasted-5.png" alt="upload successful"></p></li><li><p>①指定Spring配置文件的位置</p></li><li><p>②配置Listener，初始化SpringIOC容器</p></li><li><p>③配置前端控制器servlet，其中可以自定义配置文件位置，不配置默认寻找xxxx-servlet.xml的配置文件</p></li><li><p>url-pattern中/和/*区别</p><ul><li>/*    匹配所有url  有后缀或者无后缀都会匹配   .jsp  .css  .js</li><li>/      只匹配无后缀的url</li></ul></li></ul><p><strong><em>注：截图为项目中的配置  自己测试时改为 /  项目中拦截所有页面应该会有拦截器或者过滤器做处理，demo中如果配置成截图这样会报错</em></strong></p><h4 id="springmvc-servlet-xml"><a href="#springmvc-servlet-xml" class="headerlink" title="springmvc-servlet.xml"></a>springmvc-servlet.xml</h4><p><img src="/images/pasted-6.png" alt="upload successful"></p><ul><li><p>指定基础包名scan，将指定的包名注入SpringIOC容器（先要添加context的xsd约束）</p><ul><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br></pre></td></tr></table></figure><p>xsi中添加<br>“<a href="http://www.springframework.org/schema/context" target="_blank" rel="noopener">http://www.springframework.org/schema/context</a>       <a href="http://www.springframework.org/schema/context/spring-context.xsd&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/context/spring-context.xsd&quot;</a></p></li></ul></li></ul><ul><li><p>exclude-filter 指定类与Spring容器分开加载（先这么理解）</p></li><li><p>配置视图解析器（前缀和后缀）</p></li></ul><p><strong>方法中使用@RequestMapping(value=”search”)  理解为匹配URL中search的字样</strong></p><p><strong>方法return “iface/manage”;  从匹配的前后缀中寻找应该返回的视图，例如通过上图的配置找到/iface/manage.vm</strong></p><h4 id="配置完成访问报错"><a href="#配置完成访问报错" class="headerlink" title="配置完成访问报错"></a>配置完成访问报错</h4><p><img src="/images/pasted-7.png" alt="upload successful"></p><ul><li><p>没有jstl标签库，导入依赖即可</p></li><li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p>demo：<a href="https://github.com/panniyuyu/frameworkdemo.git" target="_blank" rel="noopener">https://github.com/panniyuyu/frameworkdemo.git</a></p><h4 id="配置文件-amp-Java类-待续"><a href="#配置文件-amp-Java类-待续" class="headerlink" title="配置文件&amp;Java类   待续"></a>配置文件&amp;Java类   待续</h4></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;SpringMVC配置&quot;&gt;&lt;a href=&quot;#SpringMVC配置&quot; class=&quot;headerlink&quot; title=&quot;SpringMVC配置&quot;&gt;&lt;/a&gt;SpringMVC配置&lt;/h2&gt;&lt;p&gt;&lt;em&gt;配置文件&amp;amp;注解&amp;amp;Java类&lt;/em&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="SpringMVC" scheme="http://yoursite.com/tags/SpringMVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常</title>
+    <link href="http://yoursite.com/2019/07/11/%E5%BC%82%E5%B8%B8/"/>
+    <id>http://yoursite.com/2019/07/11/异常/</id>
+    <published>2019-07-11T03:41:21.000Z</published>
+    <updated>2019-07-11T04:50:12.183Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="org-apache-tomcat-util-bcel-classfile-ClassFormatException-异常"><a href="#org-apache-tomcat-util-bcel-classfile-ClassFormatException-异常" class="headerlink" title="org.apache.tomcat.util.bcel.classfile.ClassFormatException 异常"></a>org.apache.tomcat.util.bcel.classfile.ClassFormatException 异常</h4><ul><li><img src="/images/pasted-4.png" alt="upload successful"></li><li>原因：jdk版本不兼容</li><li>原环境 jkd8+tomcat7+spring4  </li><li>解决：tomcat7换tomcat8</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;org-apache-tomcat-util-bcel-classfile-ClassFormatException-异常&quot;&gt;&lt;a href=&quot;#org-apache-tomcat-util-bcel-classfile-ClassFormatException-
+      
+    
+    </summary>
+    
+    
+      <category term="exception" scheme="http://yoursite.com/tags/exception/"/>
+    
+  </entry>
   
   <entry>
     <title>IDEA使用笔记</title>
@@ -46,9 +92,9 @@
     <link href="http://yoursite.com/2019/07/09/%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0/"/>
     <id>http://yoursite.com/2019/07/09/知识点复习/</id>
     <published>2019-07-09T07:49:00.000Z</published>
-    <updated>2019-07-09T14:07:05.468Z</updated>
+    <updated>2019-07-11T08:14:48.676Z</updated>
     
-    <content type="html"><![CDATA[<p>整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充</p><h4 id="HTTP和TCP"><a href="#HTTP和TCP" class="headerlink" title="HTTP和TCP"></a>HTTP和TCP</h4><p>Http是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的</p><h4 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h4><p>一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性）</p><h4 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h4><ul><li>在方法中锁住的是该类的实例对象</li><li>在静态方法中锁住的是类对象</li><li>代码块中（this）锁住的是该类的实例对象</li><li>代码块中（xxx.class）锁住的是类对象</li></ul><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p>保证线程数据可见</p><h4 id="transient-关键字"><a href="#transient-关键字" class="headerlink" title="transient 关键字"></a>transient 关键字</h4><p>不做序列化和反序列化操作</p><h4 id="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><a href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量" class="headerlink" title="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"></a>synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</h4><p>该变量可能在其他地方被调用，如果该变量只在synchronized关键字声名在方法中使用，则无需使用线程安全的数据结构。</p><h4 id="TPS-（Transaction-Per-Second）"><a href="#TPS-（Transaction-Per-Second）" class="headerlink" title="TPS （Transaction Per Second）"></a>TPS （Transaction Per Second）</h4><p>服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束</p><h4 id="QPS-（Query-Per-Second）"><a href="#QPS-（Query-Per-Second）" class="headerlink" title="QPS  （Query Per Second）"></a>QPS  （Query Per Second）</h4><p>服务器每秒处理查询的次数，查询开始到返回结果结束</p><h4 id="Git克隆分支命令"><a href="#Git克隆分支命令" class="headerlink" title="Git克隆分支命令"></a>Git克隆分支命令</h4><p>git clone -b [分支名称] [git地址]</p><h4 id="Idea配置Tomcat"><a href="#Idea配置Tomcat" class="headerlink" title="Idea配置Tomcat"></a>Idea配置Tomcat</h4><p>Run-&gt;Edit Configurations-&gt;Telplates中配置后在该页面左上角添加-&gt;选中Tomcat的Deployment点击部署</p><h4 id="Idea配置文件取消Unicode编码"><a href="#Idea配置文件取消Unicode编码" class="headerlink" title="Idea配置文件取消Unicode编码"></a>Idea配置文件取消Unicode编码</h4><p>File-&gt;Setting-&gt;搜索file encoding-&gt;勾选Transparent native-to-ascii conversion</p>]]></content>
+    <content type="html"><![CDATA[<p>整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充</p><h4 id="HTTP和TCP"><a href="#HTTP和TCP" class="headerlink" title="HTTP和TCP"></a>HTTP和TCP</h4><p>Http是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的</p><h4 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h4><p>一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性）</p><h4 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h4><ul><li>在方法中锁住的是该类的实例对象</li><li>在静态方法中锁住的是类对象</li><li>代码块中（this）锁住的是该类的实例对象</li><li>代码块中（xxx.class）锁住的是类对象</li></ul><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p>保证线程数据可见</p><h4 id="transient-关键字"><a href="#transient-关键字" class="headerlink" title="transient 关键字"></a>transient 关键字</h4><p>不做序列化和反序列化操作</p><h4 id="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><a href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量" class="headerlink" title="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"></a>synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</h4><p>该变量可能在其他地方被调用，如果该变量只在synchronized关键字声名在方法中使用，则无需使用线程安全的数据结构。</p><h4 id="TPS-（Transaction-Per-Second）"><a href="#TPS-（Transaction-Per-Second）" class="headerlink" title="TPS （Transaction Per Second）"></a>TPS （Transaction Per Second）</h4><p>服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束</p><h4 id="QPS-（Query-Per-Second）"><a href="#QPS-（Query-Per-Second）" class="headerlink" title="QPS  （Query Per Second）"></a>QPS  （Query Per Second）</h4><p>服务器每秒处理查询的次数，查询开始到返回结果结束</p><h4 id="Git克隆分支命令"><a href="#Git克隆分支命令" class="headerlink" title="Git克隆分支命令"></a>Git克隆分支命令</h4><p>git clone -b [分支名称] [git地址]</p><h4 id="Git提交代码到GitHub"><a href="#Git提交代码到GitHub" class="headerlink" title="Git提交代码到GitHub"></a>Git提交代码到GitHub</h4><ul><li>创建仓库，在本地clone</li><li>本地在.git所在的目录打开git bansh</li><li><p>指定远程仓库</p><p><em>git remote add origin <a href="https://github.com/panniyuyu/frameworkdemo.git" target="_blank" rel="noopener">https://github.com/panniyuyu/frameworkdemo.git</a></em></p><ul><li>会提示 remote origin already exists    </li></ul><ul><li><p>执行删除命令后再重新指定远程仓库</p><p><em>git remote rm origin</em></p></li></ul></li><li><p>添加文件<br><em>git add </em> *</p></li><li>提交改动<br><em>git commit -m “xxxx”</em></li><li>推到远程仓库<br><em>git push origin master</em></li></ul>]]></content>
     
     <summary type="html">
     

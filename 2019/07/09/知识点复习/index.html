@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="YyWang&#39;s Blog">
 <meta property="og:description" content="整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（th">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-09T14:07:05.468Z">
+<meta property="og:updated_time" content="2019-07-11T08:14:48.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识点复习">
 <meta name="twitter:description" content="整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（th">
@@ -453,12 +453,24 @@
                 
               
 
-              <time title="创建时间：2019-07-09 15:49:00 / 修改时间：22:07:05" itemprop="dateCreated datePublished" datetime="2019-07-09T15:49:00+08:00">2019-07-09</time>
+              <time title="创建时间：2019-07-09 15:49:00" itemprop="dateCreated datePublished" datetime="2019-07-09T15:49:00+08:00">2019-07-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-11 16:14:48" itemprop="dateModified" datetime="2019-07-11T16:14:48+08:00">2019-07-11</time>
               
             
           </span>
@@ -527,8 +539,25 @@
 <h4 id="TPS-（Transaction-Per-Second）"><a href="#TPS-（Transaction-Per-Second）" class="headerlink" title="TPS （Transaction Per Second）"></a>TPS （Transaction Per Second）</h4><p>服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束</p>
 <h4 id="QPS-（Query-Per-Second）"><a href="#QPS-（Query-Per-Second）" class="headerlink" title="QPS  （Query Per Second）"></a>QPS  （Query Per Second）</h4><p>服务器每秒处理查询的次数，查询开始到返回结果结束</p>
 <h4 id="Git克隆分支命令"><a href="#Git克隆分支命令" class="headerlink" title="Git克隆分支命令"></a>Git克隆分支命令</h4><p>git clone -b [分支名称] [git地址]</p>
-<h4 id="Idea配置Tomcat"><a href="#Idea配置Tomcat" class="headerlink" title="Idea配置Tomcat"></a>Idea配置Tomcat</h4><p>Run-&gt;Edit Configurations-&gt;Telplates中配置后在该页面左上角添加-&gt;选中Tomcat的Deployment点击部署</p>
-<h4 id="Idea配置文件取消Unicode编码"><a href="#Idea配置文件取消Unicode编码" class="headerlink" title="Idea配置文件取消Unicode编码"></a>Idea配置文件取消Unicode编码</h4><p>File-&gt;Setting-&gt;搜索file encoding-&gt;勾选Transparent native-to-ascii conversion</p>
+<h4 id="Git提交代码到GitHub"><a href="#Git提交代码到GitHub" class="headerlink" title="Git提交代码到GitHub"></a>Git提交代码到GitHub</h4><ul>
+<li>创建仓库，在本地clone</li>
+<li>本地在.git所在的目录打开git bansh</li>
+<li><p>指定远程仓库</p>
+<p><em>git remote add origin <a href="https://github.com/panniyuyu/frameworkdemo.git" target="_blank" rel="noopener">https://github.com/panniyuyu/frameworkdemo.git</a></em></p>
+<ul>
+<li>会提示 remote origin already exists    </li>
+</ul>
+<ul>
+<li><p>执行删除命令后再重新指定远程仓库</p>
+<p><em>git remote rm origin</em></p>
+</li>
+</ul>
+</li>
+<li><p>添加文件<br><em>git add </em> *</p>
+</li>
+<li>提交改动<br><em>git commit -m “xxxx”</em></li>
+<li>推到远程仓库<br><em>git push origin master</em></li>
+</ul>
 
       
     </div>
@@ -758,7 +787,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -796,7 +825,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1074,7 +1107,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP和TCP"><span class="nav-number">1.</span> <span class="nav-text">HTTP和TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">2.</span> <span class="nav-text">幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-关键字"><span class="nav-number">3.</span> <span class="nav-text">synchronized 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-number">4.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transient-关键字"><span class="nav-number">5.</span> <span class="nav-text">transient 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><span class="nav-number">6.</span> <span class="nav-text">synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TPS-（Transaction-Per-Second）"><span class="nav-number">7.</span> <span class="nav-text">TPS （Transaction Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QPS-（Query-Per-Second）"><span class="nav-number">8.</span> <span class="nav-text">QPS  （Query Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git克隆分支命令"><span class="nav-number">9.</span> <span class="nav-text">Git克隆分支命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Idea配置Tomcat"><span class="nav-number">10.</span> <span class="nav-text">Idea配置Tomcat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Idea配置文件取消Unicode编码"><span class="nav-number">11.</span> <span class="nav-text">Idea配置文件取消Unicode编码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP和TCP"><span class="nav-number">1.</span> <span class="nav-text">HTTP和TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">2.</span> <span class="nav-text">幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-关键字"><span class="nav-number">3.</span> <span class="nav-text">synchronized 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-number">4.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transient-关键字"><span class="nav-number">5.</span> <span class="nav-text">transient 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><span class="nav-number">6.</span> <span class="nav-text">synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TPS-（Transaction-Per-Second）"><span class="nav-number">7.</span> <span class="nav-text">TPS （Transaction Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QPS-（Query-Per-Second）"><span class="nav-number">8.</span> <span class="nav-text">QPS  （Query Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git克隆分支命令"><span class="nav-number">9.</span> <span class="nav-text">Git克隆分支命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git提交代码到GitHub"><span class="nav-number">10.</span> <span class="nav-text">Git提交代码到GitHub</span></a></li></ol></div>
             
 
           </div>
@@ -1091,7 +1124,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
         </div>
       </div>
