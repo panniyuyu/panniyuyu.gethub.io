@@ -4,6 +4,12 @@
     <title><![CDATA[IDEA使用笔记]]></title>
     <url>%2F2019%2F07%2F11%2FIDEA%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[配置TomcatRun-&gt;Edit Configurations-&gt;Telplates中配置后在该页面左上角添加-&gt;选中Tomcat的Deployment点击部署(选用Artifacts方式) 配置文件取消Unicode编码File-&gt;Setting-&gt;搜索file encoding-&gt;勾选Transparent native-to-ascii conversion 文件目录变红色 解除版本控制即可 file-&gt;setting-&gt;version control-&gt;右上角加号-&gt;添加项目目录即可 新建的maven项目没有web项目的目录结构，也没有web.xml 增加main目录下增加/webapp/WEB-INF目录 File-&gt;Project Structure-&gt;facets-&gt;加号-&gt;选中目录 确认路径depolyment路径为…./webapp/WEB-INF/web.xml 确认路径resource路径为 …./webapp/ 直接创建maven web项目最为简单 createProject-&gt;maven-&gt;勾选Creater from archetype-&gt;选择 maven-archetype-webapp 右键没有new package修改目录性质，在该目录右键-&gt;Mark Directory as-&gt;Source Root 发布方式（参考https://www.cnblogs.com/dpl9963/p/10075456.html） jar：Java ARchrive，仅仅是编译好的Java类的聚合 war：Web application ARchrive，除Java类之外还包含jsp，config等静态资源的聚合 exploded：理解为展开不压缩，jar和war是压缩的目录节后，exploded表示不压缩的文件目录，开发是用该方式较好，文件更改后不用重新启动服务器看到效果 Debug模式 快捷键改为eclipse后，F5，F6不变，eclipse的F8变为F9（程序放行） 修改文件后没有效果必须重启tomcat runConfigurations中配置]]></content>
+      <categories>
+        <category>IDEA</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[知识点复习]]></title>
