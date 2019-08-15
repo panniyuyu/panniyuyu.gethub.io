@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2019/08/15/Optional/</loc>
+    <lastmod>2019-08-15</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2019/07/12/MyBatis%E5%85%A5%E9%97%A8%E7%BB%AD-CRUD%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2019-08-14</lastmod>
   </url>  <url>
