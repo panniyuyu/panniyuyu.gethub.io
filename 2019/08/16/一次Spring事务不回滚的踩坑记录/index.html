@@ -119,17 +119,18 @@
 
 
 
-  <meta name="description" content="整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（th">
+  <meta name="description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="知识点复习">
-<meta property="og:url" content="http://yoursite.com/2019/07/09/知识点复习/index.html">
+<meta property="og:title" content="一次Spring事务不回滚的踩坑记录">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（th">
+<meta property="og:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-17T10:36:53.087Z">
+<meta property="og:updated_time" content="2019-08-16T13:02:23.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知识点复习">
-<meta name="twitter:description" content="整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充 HTTP和TCPHttp是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的 幂等性一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性） synchronized 关键字 在方法中锁住的是该类的实例对象 在静态方法中锁住的是类对象 代码块中（th">
+<meta name="twitter:title" content="一次Spring事务不回滚的踩坑记录">
+<meta name="twitter:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
 
 
 
@@ -139,7 +140,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/09/知识点复习/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
 
 
 
@@ -149,7 +150,7 @@
   };
 </script>
 
-  <title>知识点复习 | YyWang's Blog</title>
+  <title>一次Spring事务不回滚的踩坑记录 | YyWang's Blog</title>
   
 
 
@@ -410,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/知识点复习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YyWang">
@@ -427,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">知识点复习
+          <h1 class="post-title" itemprop="name headline">一次Spring事务不回滚的踩坑记录
 
               
             
@@ -453,24 +454,12 @@
                 
               
 
-              <time title="创建时间：2019-07-09 15:49:00" itemprop="dateCreated datePublished" datetime="2019-07-09T15:49:00+08:00">2019-07-09</time>
+              <time title="创建时间：2019-08-16 21:01:13 / 修改时间：21:02:23" itemprop="dateCreated datePublished" datetime="2019-08-16T21:01:13+08:00">2019-08-16</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-17 18:36:53" itemprop="dateModified" datetime="2019-07-17T18:36:53+08:00">2019-07-17</time>
               
             
           </span>
@@ -488,8 +477,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/07/09/知识点复习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/知识点复习/" itemprop="commentCount"></span>
+                <a href="/2019/08/16/一次Spring事务不回滚的踩坑记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/16/一次Spring事务不回滚的踩坑记录/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -524,78 +513,23 @@
       
 
       
-        <p>整理一些在看项目时候遇到的小的知识点，先写个大概，后续再做详细的补充</p>
-<h4 id="HTTP和TCP"><a href="#HTTP和TCP" class="headerlink" title="HTTP和TCP"></a>HTTP和TCP</h4><p>Http是在Tcp的基础之上的，也就是说Http的请求和相应是在建立Tcp链接之后发生的</p>
-<h4 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h4><p>一次或者多次请求同一个资源得到的结果是一样的，多次请求不会影响最终的结果。（增加去重的逻辑则无需满足幂等性）</p>
-<h4 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h4><ul>
-<li>在方法中锁住的是该类的实例对象</li>
-<li>在静态方法中锁住的是类对象</li>
-<li>代码块中（this）锁住的是该类的实例对象</li>
-<li>代码块中（xxx.class）锁住的是类对象</li>
-</ul>
-<h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p>保证线程数据可见</p>
-<h4 id="transient-关键字"><a href="#transient-关键字" class="headerlink" title="transient 关键字"></a>transient 关键字</h4><p>不做序列化和反序列化操作</p>
-<h4 id="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><a href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量" class="headerlink" title="synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"></a>synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</h4><p>该变量可能在其他地方被调用，如果该变量只在synchronized关键字声名在方法中使用，则无需使用线程安全的数据结构。</p>
-<h4 id="TPS-（Transaction-Per-Second）"><a href="#TPS-（Transaction-Per-Second）" class="headerlink" title="TPS （Transaction Per Second）"></a>TPS （Transaction Per Second）</h4><p>服务器每秒处理的事务个数，一个事务是从向服务器发送请求开始，客户端接收到响应结束</p>
-<h4 id="QPS-（Query-Per-Second）"><a href="#QPS-（Query-Per-Second）" class="headerlink" title="QPS  （Query Per Second）"></a>QPS  （Query Per Second）</h4><p>服务器每秒处理查询的次数，查询开始到返回结果结束</p>
-<h4 id="Git克隆分支命令"><a href="#Git克隆分支命令" class="headerlink" title="Git克隆分支命令"></a>Git克隆分支命令</h4><p>git clone -b [分支名称] [git地址]</p>
-<h4 id="Git提交代码到GitHub"><a href="#Git提交代码到GitHub" class="headerlink" title="Git提交代码到GitHub"></a>Git提交代码到GitHub</h4><ul>
-<li>创建仓库，在本地clone</li>
-<li>本地在.git所在的目录打开git bansh</li>
-<li><p>指定远程仓库</p>
-<p><em>git remote add origin <a href="https://github.com/panniyuyu/frameworkdemo.git" target="_blank" rel="noopener">https://github.com/panniyuyu/frameworkdemo.git</a></em></p>
+        <h3 id="一次Spring事务不回滚的踩坑记录"><a href="#一次Spring事务不回滚的踩坑记录" class="headerlink" title="一次Spring事务不回滚的踩坑记录"></a>一次Spring事务不回滚的踩坑记录</h3><p>Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检查代码没有发现错误，那咋办呢？开始百度吧，百度的结果千篇一律，都是针对不了解Spring默认捕获unchecked异常的解决办法，这些早已在我的经验里了，有3种方法</p>
 <ul>
-<li>会提示 remote origin already exists    </li>
+<li>1.手动抛出unchecked异常，让Spring去捕获，然后自动回滚数据</li>
+<li>2.手动回滚，在发生异常的地方添加代码 <strong>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</strong></li>
+<li>3.在注解的地方添加配置<strong>rollbackFor = { Exception.class }</strong>，让Spring在捕获到特定的异常自动回滚数据 </li>
 </ul>
-<ul>
-<li><p>执行删除命令后再重新指定远程仓库</p>
-<p><em>git remote rm origin</em></p>
-</li>
-</ul>
-</li>
-<li><p>添加文件<br><em>git add </em> *</p>
-</li>
-<li>提交改动<br><em>git commit -m “xxxx”</em></li>
-<li>推到远程仓库<br><em>git push origin master</em></li>
-</ul>
-<h4 id="wait-方法"><a href="#wait-方法" class="headerlink" title="wait()方法"></a>wait()方法</h4><ul>
-<li><p>会暂停当前线程，让出CPU时间，同时让出锁，等待notify()或者notifyAll()唤醒后重新获得锁执行</p>
-<p><em>sleep()方法同样会暂停当前线程，让出CPU时间，与 wait()方法不同的是，sleep()方法不会释放锁，会阻塞当前的线程，且sleep()是Thread类中的方法, wait()是Object的方法</em></p>
-</li>
-</ul>
-<h4 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h4><ul>
-<li><p>Java中优先级低的线程，用来服务于用户线程的，当Java程序退出或者jvm退出时，守护线程自动退出，jvm运行时只需关注用户线程即可。</p>
-<p><em>Jvm中的垃圾收集器可以理解为守护线程，当jvm退出时会自动退出</em></p>
-<p><em>使用 thread.setDaemon(true)设置，要在start()方法之前</em></p>
-</li>
-</ul>
-<h4 id="Class的isAssignableFrom方法"><a href="#Class的isAssignableFrom方法" class="headerlink" title="Class的isAssignableFrom方法"></a>Class的isAssignableFrom方法</h4><ul>
-<li>Class中的方法，如：a.isAssignableFrom(b) 在a是b的父类或接口，亦或是a、b是同一个类或者接口的情况下返回true，其他情况返回false</li>
-</ul>
-<h4 id="Class的getFields和getDeclaredFields"><a href="#Class的getFields和getDeclaredFields" class="headerlink" title="Class的getFields和getDeclaredFields"></a>Class的getFields和getDeclaredFields</h4><ul>
-<li>都是获取类中的字段，getFields获取类中public的字段，getDeclaredFields获取类中所有声名的字段，不包含父类中的字段</li>
-</ul>
-<h4 id="Field的getModifiers"><a href="#Field的getModifiers" class="headerlink" title="Field的getModifiers"></a>Field的getModifiers</h4><ul>
-<li>获取字段的修饰符，返回值为int型对应不同的类型</li>
-<li>PUBLIC: 1</li>
-<li>PRIVATE: 2</li>
-<li>PROTECTED: 4</li>
-<li>STATIC: 8</li>
-<li>FINAL: 16</li>
-<li>SYNCHRONIZED: 32</li>
-<li>VOLATILE: 64</li>
-<li>TRANSIENT: 128</li>
-<li>NATIVE: 256</li>
-<li>INTERFACE: 512</li>
-<li>ABSTRACT: 1024</li>
-<li>STRICT: 2048</li>
-</ul>
-<h4 id="Field的setAccessible-true"><a href="#Field的setAccessible-true" class="headerlink" title="Field的setAccessible(true)"></a>Field的setAccessible(true)</h4><ul>
-<li>字段被声名是私有的，在取值前必须设置accessible为true，不然会报错</li>
-</ul>
-<h4 id="field的getGenericType和getType"><a href="#field的getGenericType和getType" class="headerlink" title="field的getGenericType和getType"></a>field的getGenericType和getType</h4><ul>
-<li>都是获取字段的类型，getGenericType返回的是Type类型，getType返回的是Class类型</li>
-<li>还有其他不同，暂时没有理解<a href="http://www.51gjie.com/java/793.html" target="_blank" rel="noopener">http://www.51gjie.com/java/793.html</a></li>
+<p>3种方法我都知道，但是我一般只用第一种，因为简单，这次我选择用第二种方法试下，竟然没问题了，我意识到是我的问题了，开始检查代码，我的代码逻辑如下（见笑）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">    result = false;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还是不知道错在哪里，没有办法开始Debug，惊奇的发现RuntimeException竟然被忽略了，这才发现我finally中有return，被我自己蠢哭了，基础真是太重要了，我还盲目自信的知道Spring的事务如何使用，到头来连try catch finally都没搞清楚，真是太蠢了。接着我修改了代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">&#125; </span><br><span class="line">return result;</span><br></pre></td></tr></table></figure>
+<p>这下确实是回滚了，但是返回值是true，想得到的时false，这又难受了，再次Debug，很多次F6后我明白了，RuntimeException是被Spring框架里的层层代理catch了————————————————————————————————————————————————————————————–<br>我把我自己给骗了，RuntimeException抛出程序已经终止了，即使再多的catch最后也不会回到result = true那一行，最终得出原因是其他ajax请求的结果返回到了前台给的提示让我误解了</p>
+<hr>
+<p>到这里我意识到自己是真的菜，补习一下try catch finally吧<br>找到<a href="https://blog.csdn.net/mxd446814583/article/details/80355572" target="_blank" rel="noopener">一篇好文</a></p>
+<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><ul>
+<li>如果finally中有return，try和catch中的return会失效，并且<strong>catch中即使抛出unchecked异常也同样会失效</strong>（这是今天踩的坑）；如果finally中有异常相当于整个方法有了异常，那么就没有最终的返回值了,catch中有了异常同样的效果，所以catch和finally中不要出现异常</li>
+<li>如果finally中没有return，try和catch中走最先到达return逻辑的地方，并且在return前将返回值暂存，即使finally中修改也不会有效果；（也就是说没有异常最先到达try块中的return，返回值是try块的返回值，catch和finally修改也不会生效；如果try块有异常最先到达catch块中的return，返回值是catch块的返回值，前提是catch块中没有异常，有异常整个方法都没有返回值）</li>
+<li>综上所述，<strong>使用Spring事务避免不出错优先使用方法2和方法3，方法1比较绕并且对有返回值的逻辑不是很友好；finally块中尽量不要return，这样会忽略try和catch中的异常；最后，基础真的很重要</strong></li>
 </ul>
 
       
@@ -664,7 +598,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/07/09/知识点复习/" title="知识点复习">http://yoursite.com/2019/07/09/知识点复习/</a>
+    <a href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/" title="一次Spring事务不回滚的踩坑记录">http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -674,6 +608,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          
+        </div>
       
 
       
@@ -739,8 +679,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/11/第一篇博客/" rel="next" title="第一篇博客">
-                <i class="fa fa-chevron-left"></i> 第一篇博客
+              <a href="/2019/08/15/Optional/" rel="next" title="Optional 使用及源码">
+                <i class="fa fa-chevron-left"></i> Optional 使用及源码
               </a>
             
           </div>
@@ -748,10 +688,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/11/IDEA使用笔记/" rel="prev" title="IDEA使用笔记">
-                IDEA使用笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1162,7 +1098,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP和TCP"><span class="nav-number">1.</span> <span class="nav-text">HTTP和TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">2.</span> <span class="nav-text">幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-关键字"><span class="nav-number">3.</span> <span class="nav-text">synchronized 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-number">4.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transient-关键字"><span class="nav-number">5.</span> <span class="nav-text">transient 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized在方法中声名为什么还用线程安全的数据结构来存放变量"><span class="nav-number">6.</span> <span class="nav-text">synchronized在方法中声名为什么还用线程安全的数据结构来存放变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TPS-（Transaction-Per-Second）"><span class="nav-number">7.</span> <span class="nav-text">TPS （Transaction Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QPS-（Query-Per-Second）"><span class="nav-number">8.</span> <span class="nav-text">QPS  （Query Per Second）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git克隆分支命令"><span class="nav-number">9.</span> <span class="nav-text">Git克隆分支命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git提交代码到GitHub"><span class="nav-number">10.</span> <span class="nav-text">Git提交代码到GitHub</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wait-方法"><span class="nav-number">11.</span> <span class="nav-text">wait()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#守护线程"><span class="nav-number">12.</span> <span class="nav-text">守护线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class的isAssignableFrom方法"><span class="nav-number">13.</span> <span class="nav-text">Class的isAssignableFrom方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class的getFields和getDeclaredFields"><span class="nav-number">14.</span> <span class="nav-text">Class的getFields和getDeclaredFields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Field的getModifiers"><span class="nav-number">15.</span> <span class="nav-text">Field的getModifiers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Field的setAccessible-true"><span class="nav-number">16.</span> <span class="nav-text">Field的setAccessible(true)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#field的getGenericType和getType"><span class="nav-number">17.</span> <span class="nav-text">field的getGenericType和getType</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一次Spring事务不回滚的踩坑记录"><span class="nav-number">1.</span> <span class="nav-text">一次Spring事务不回滚的踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一下"><span class="nav-number">2.</span> <span class="nav-text">总结一下</span></a></li></ol></div>
             
 
           </div>
