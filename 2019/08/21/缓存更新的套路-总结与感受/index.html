@@ -119,18 +119,18 @@
 
 
 
-  <meta name="description" content="Optional 使用及源码分析A container object which may or may not contain a non-null value. 可能包含空值的容器对象。 怎么理解呢？就把它当成是和Collection一样的容器，Collection是通过不同的数据结构和API来操作容器中的元素；Optional则是提供API来判断容器中的元素是否为空，在此基础上还能根据是否为空">
-<meta name="keywords" content="Java8">
+  <meta name="description" content="注： 本文是阅读 [缓存更新的套路] (https://coolshell.cn/articles/17416.html) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读 经典方法 – Cache Aside Pattern 读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中 写操作：先写MySQL，成功后删除Redis中的数据  为什么这样的方案会">
+<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Optional 使用及源码">
-<meta property="og:url" content="http://yoursite.com/2019/08/15/Optional/index.html">
+<meta property="og:title" content="缓存更新的套路 总结与感受">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/缓存更新的套路-总结与感受/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="Optional 使用及源码分析A container object which may or may not contain a non-null value. 可能包含空值的容器对象。 怎么理解呢？就把它当成是和Collection一样的容器，Collection是通过不同的数据结构和API来操作容器中的元素；Optional则是提供API来判断容器中的元素是否为空，在此基础上还能根据是否为空">
+<meta property="og:description" content="注： 本文是阅读 [缓存更新的套路] (https://coolshell.cn/articles/17416.html) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读 经典方法 – Cache Aside Pattern 读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中 写操作：先写MySQL，成功后删除Redis中的数据  为什么这样的方案会">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T13:12:43.215Z">
+<meta property="og:updated_time" content="2019-08-21T06:57:48.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Optional 使用及源码">
-<meta name="twitter:description" content="Optional 使用及源码分析A container object which may or may not contain a non-null value. 可能包含空值的容器对象。 怎么理解呢？就把它当成是和Collection一样的容器，Collection是通过不同的数据结构和API来操作容器中的元素；Optional则是提供API来判断容器中的元素是否为空，在此基础上还能根据是否为空">
+<meta name="twitter:title" content="缓存更新的套路 总结与感受">
+<meta name="twitter:description" content="注： 本文是阅读 [缓存更新的套路] (https://coolshell.cn/articles/17416.html) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读 经典方法 – Cache Aside Pattern 读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中 写操作：先写MySQL，成功后删除Redis中的数据  为什么这样的方案会">
 
 
 
@@ -140,7 +140,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/15/Optional/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/缓存更新的套路-总结与感受/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Optional 使用及源码 | YyWang's Blog</title>
+  <title>缓存更新的套路 总结与感受 | YyWang's Blog</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/Optional/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/缓存更新的套路-总结与感受/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YyWang">
@@ -428,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Optional 使用及源码
+          <h1 class="post-title" itemprop="name headline">缓存更新的套路 总结与感受
 
               
             
@@ -454,7 +454,7 @@
                 
               
 
-              <time title="创建时间：2019-08-15 20:58:37 / 修改时间：21:12:43" itemprop="dateCreated datePublished" datetime="2019-08-15T20:58:37+08:00">2019-08-15</time>
+              <time title="创建时间：2019-08-21 14:51:35 / 修改时间：14:57:48" itemprop="dateCreated datePublished" datetime="2019-08-21T14:51:35+08:00">2019-08-21</time>
             
 
             
@@ -464,24 +464,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java8/" itemprop="url" rel="index"><span itemprop="name">Java8</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -495,8 +477,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/15/Optional/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/15/Optional/" itemprop="commentCount"></span>
+                <a href="/2019/08/21/缓存更新的套路-总结与感受/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/缓存更新的套路-总结与感受/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -531,114 +513,63 @@
       
 
       
-        <h3 id="Optional-使用及源码分析"><a href="#Optional-使用及源码分析" class="headerlink" title="Optional 使用及源码分析"></a>Optional 使用及源码分析</h3><p>A container object which may or may not contain a non-null value.</p>
-<p>可能包含空值的容器对象。</p>
-<p>怎么理解呢？就把它当成是和Collection一样的容器，Collection是通过不同的数据结构和API来操作容器中的元素；Optional则是提供API来判断容器中的元素是否为空，在此基础上还能根据是否为空的不同结果给出自定义的处理逻辑。这么说还是很抽象，直接上源码就会好理解一些。</p>
-<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 空的Optional对象</span><br><span class="line">private static final Optional&lt;?&gt; EMPTY = new Optional&lt;&gt;();</span><br><span class="line">// 容器中元素的值</span><br><span class="line">private final T value;</span><br></pre></td></tr></table></figure>
-<p>这个value是容器中元素的值，怎么理解呢，使用Optional是要通过它的API进行判空来达到避免NPE的现象，上面说到将Optional当成是一个容器，这个容器中的元素则是需要判空的对象，也就是说容器中的元素就是你传入的参数，这个value就是传参的值</p>
-<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>无参构造，只是将value置为null</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private Optional() &#123;</span><br><span class="line">        this.value = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有参构造</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private Optional(T value) &#123;</span><br><span class="line">    this.value = Objects.requireNonNull(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中返回Objects中的requireNonNull的方法，再看这个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; T requireNonNull(T obj) &#123;</span><br><span class="line">    if (obj == null)</span><br><span class="line">        throw new NullPointerException();</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>很简单如果obj为空抛出异常，不为空返回本身，所以有参构造的效果就是确认value不为空并给value赋值，如果是空就抛异常</p>
-<p>而且这两个构造函数是私有的，也就是说我们不能new出来</p>
-<h4 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h4><ul>
-<li>empty()–返回空的Optional对象</li>
+        <p><strong>注：</strong> 本文是阅读 [缓存更新的套路] (<a href="https://coolshell.cn/articles/17416.html" target="_blank" rel="noopener">https://coolshell.cn/articles/17416.html</a>) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读</p>
+<h3 id="经典方法-–-Cache-Aside-Pattern"><a href="#经典方法-–-Cache-Aside-Pattern" class="headerlink" title="经典方法 – Cache Aside Pattern"></a>经典方法 – Cache Aside Pattern</h3><ul>
+<li>读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中</li>
+<li>写操作：先写MySQL，成功后删除Redis中的数据</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; Optional&lt;T&gt; empty() &#123;</span><br><span class="line">    Optional var0 = EMPTY;</span><br><span class="line">    return var0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么这样的方案会是经典方法呢？因为简单，有效，错误少</p>
 <ul>
-<li>of(T var1)–调用了有参构造，即有值返回带有该值得Optional对象，为空则会抛异常</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; Optional&lt;T&gt; of(T var0) &#123;</span><br><span class="line">    return new Optional(var0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>ofNullable(T var0)–元素为null返回空的Option对象，不是null返回本身</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; Optional&lt;T&gt; ofNullable(T var0) &#123;</span><br><span class="line">    return var0 == null ? empty() : of(var0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>get()–从名字就可以看出是获取元素的值，也就是返回value，如果是null的话会抛异常</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public T get() &#123;</span><br><span class="line">    if (this.value == null) &#123;</span><br><span class="line">        throw new NoSuchElementException(&quot;No value present&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return this.value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>isPresent()–返回value是否为null</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPresent() &#123;</span><br><span class="line">    return this.value != null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>ifPresent(Consumer&lt;? super T&gt; var)–如果元素不是空的话执行var1中的逻辑，Consumer之前有文章写过，是接收一个参数执行一个没有返回值得逻辑</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void ifPresent(Consumer&lt;? super T&gt; var1) &#123;</span><br><span class="line">	if (this.value != null) &#123;</span><br><span class="line">	    var1.accept(this.value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>filter(Predicate&lt;? super T&gt; var1)–首先确保predicate对象和value不是null，然后用predicate对象对value进行筛选，满足条件返回本身，不满足条件返回空的对象（看源码是这个意思，具体怎什么情况用还想不到~）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Optional&lt;T&gt; filter(Predicate&lt;? super T&gt; var1) &#123;</span><br><span class="line">    Objects.requireNonNull(var1);</span><br><span class="line">    if (!this.isPresent()) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return var1.test(this.value) ? this : empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>map(Function&lt;? super T, ? extends U&gt; var1)–同样确保var1不是null，之后value为空值返回空的Optional对象，value有值执行var1中的逻辑</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public &lt;U&gt; Optional&lt;U&gt; map(Function&lt;? super T, ? extends U&gt; var1) &#123;</span><br><span class="line">    Objects.requireNonNull(var1);</span><br><span class="line">    return !this.isPresent() ? empty() : ofNullable(var1.apply(this.value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>flatMap(Function&lt;? super T, Optional&lt; U &gt;&gt; var1)–与map方法相同,不同的是入参，根据不同的参数结构使用不同的方法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public &lt;U&gt; Optional&lt;U&gt; flatMap(Function&lt;? super T, Optional&lt;U&gt;&gt; var1) &#123;</span><br><span class="line">    Objects.requireNonNull(var1);</span><br><span class="line">    return !this.isPresent() ? empty() : (Optional)Objects.requireNonNull(var1.apply(this.value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>T orElse(T var1)–获取value的值，不为空返回本身，为空返回入参var1</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public T orElse(T var1) &#123;</span><br><span class="line">    return this.value != null ? this.value : var1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>T orElseGet(Supplier&lt;? extends T&gt; var1)–与orElse的逻辑一样，不同的是value为空返回的是supplier对象的逻辑</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public T orElseGet(Supplier&lt;? extends T&gt; var1) &#123;</span><br><span class="line">    return this.value != null ? this.value : var1.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>T orElseThrow(Supplier&lt;? extends X&gt; var1)–同样的逻辑，不同的是value为null会抛异常</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; var1) throws X &#123;</span><br><span class="line">    if (this.value != null) &#123;</span><br><span class="line">        return this.value;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        throw (Throwable)var1.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>of和ofNullable<ul>
-<li>都是取值，如果元素是null的话of会报空指针–不用，ofNullable将null转为空的对象没有空指针；</li>
-<li>get方法同样是取值，value是null也会抛异常–不用</li>
-<li>最后，取值用ofNullable就完事了</li>
+<li>场景1–写操作如果先删除Redis中的数据再操作数据库<ul>
+<li>如果一个写操作和读操作并发执行，写操作删除了Redis中的数据还没来得及将数据更新到MySQL中，读操作没有在Redis中读取到数据，而从MySQL中读到旧的数据并更新到了Redis中，这样虽然MySQL中的数据是正确的，因为Redis的存在使得每次读取的数据都是脏数据。（这种情况只会发生在删除Redis数据后，写MySQL前这段时间，因为写MySQL时可以通过加悲观锁来避免问题）</li>
 </ul>
 </li>
-<li>isPresent和ifPresent<ul>
-<li>isPresent返回元素是否为null，有返回值</li>
-<li>ifPresent元素不为空执行一段逻辑，无返回值</li>
-<li>最后，只判断用isPresent有逻辑用ifPresent</li>
+<li>场景2–写操作后增加更新Redis数据<ul>
+<li>这样读和写的操作都会更新Redis数据看似更稳健了，其实不然，更新操作变多了脏数据也会变多，比如有两个写操作a和b，按照请求的时间来说最终的状态应该是b，极端情况下ab都完成了更新数据库的操作，在更新Redis的时候，b先完成了，随后a完成又将Redis数据改成了a的状态，这样还是会存在脏数据 ，虽然出现的概率不大相对于经典方法多了产生脏数据的可能性，所以不可取</li>
 </ul>
 </li>
-<li>filter、map和flatMap<ul>
-<li>都是将不是null的元素执行传入的逻辑，根据不同的需求选择方法</li>
-</ul>
-</li>
-<li>orElse、orElseGet和orElseThrow<ul>
-<li>都是将null的元素做转换，orElse返回传入的值，orElseGet返回传入的逻辑，这两个方法看需求没有逻辑有orElse有逻辑用orElseGet；orElseThrow元素为null抛异常–不用</li>
+<li>场景3–脏数据<ul>
+<li>经典方法可以避免场景1和2的问题，但也不是万无一失的，当一个读操作在Redis中没有命中时，从MySQL中获取了数据，在更新Redis数据之前，有一个写操作完成，此时MySQL的数据已经变了，而读操作会把之前的数据写入Redis中，产生脏数据。而这样的场景发生的几率非常非常小，由于MySQL锁的限制，只能发生在读操作读取数据之后读操作更新Redis数据之前，并且这段时间有一个写操作完成，同样因为锁的存在写操作一般都比读操作会耗时，并且给Redis数据增加过期时间进一步减小脏数据的产生几率</li>
 </ul>
 </li>
 </ul>
-<h4 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h4><p>刚刚学习还不知道怎么使用，看到[一篇文章]（<a href="https://www.cnblogs.com/rjzheng/p/9163246.html）" target="_blank" rel="noopener">https://www.cnblogs.com/rjzheng/p/9163246.html）</a> 给的栗子不错，很有借鉴意义，但是我对这篇文章中的orElse和orElseGet的栗子有不同意见。</p>
-<h5 id="栗子1"><a href="#栗子1" class="headerlink" title="栗子1"></a>栗子1</h5><ul>
-<li>使用前</li>
+<p>综上所述，虽然经典方法在场景3略有瑕疵，但依然经典可用，因为其简单，有效，错误少</p>
+<h3 id="Read-Write-Through-Pattern"><a href="#Read-Write-Through-Pattern" class="headerlink" title="Read/Write Through Pattern"></a>Read/Write Through Pattern</h3><ul>
+<li>读操作：Redis命中直接返回；没有命中从MySQL中读取后更新到Redis中</li>
+<li>写操作：Redis中命中更新Redis；没有命中更新MySQL</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public String getCity(User user)  throws Exception&#123;</span><br><span class="line">    if(user!=null)&#123;</span><br><span class="line">        if(user.getAddress()!=null)&#123;</span><br><span class="line">            Address address = user.getAddress();</span><br><span class="line">            if(address.getCity()!=null)&#123;</span><br><span class="line">                return address.getCity();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    throw new Excpetion(&quot;取值错误&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种模式写操作只针对于一个数据库（MySQL或者Redis），读数据时在Redis中没有命中会从MySQL中读取到Redis中，长时间运行后大部分数据都会在Redis中命中，写操作也会针对于Redis，相当于是强依赖于Redis，弱依赖甚至不依赖于MySQL，这么看来这种方式是最高效的，但是有一个致命的缺点，数据可能会丢失，由于强依赖于Redis中的数据，同样强依赖于Redis的高可用性，当Redis的数据丢失没有很好的灾备的话，数据就没了，这时如果想通过MySQL恢复几乎是不可能的了。总结一下，这种模式有利有弊，具体使用场景需要针对于具体的业务场景，我认为如果有比较好的Redis高可用和灾备的策略，这种模式还是非常好用的。</p>
+<h3 id="Write-Behind-Caching-Pattern"><a href="#Write-Behind-Caching-Pattern" class="headerlink" title="Write Behind Caching Pattern"></a>Write Behind Caching Pattern</h3><ul>
+<li>读操作：Redis命中直接返回；没有命中则从MySQL中获取数据返回</li>
+<li>写操作：无论Redis命中与否都先更新Redis，接着异步更新MySQL中的数据</li>
+</ul>
+<p>原文中也提到，这么做会极大的提高I/O，相当于只操作了Redis，是内存级别的读写，同时这么做也有缺点，就是在同步数据到MySQL时如果服务器宕机断电等事故将会永久性的数据丢失</p>
+<h3 id="精彩评论"><a href="#精彩评论" class="headerlink" title="精彩评论"></a>精彩评论</h3><p>摘取了一些大佬们的评论，很有启发</p>
 <ul>
-<li>使用后</li>
+<li>一位名叫 ty 的大佬说：”Cache Aside Pattern模式，两个更新操作同时进来，也可能会有cache脏数据的问题啊<br>顺序如下：<br>第一个写数据库，第二个写数据库，第二个写cache，第一个写cache<br>这样cache里是第一个数据，而数据库里是第二个“</li>
+<li>——–这和我想的是一样的，哈哈</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String getCity(User user) throws Exception&#123;</span><br><span class="line">    return Optional.ofNullable(user)</span><br><span class="line">                   .map(u-&gt; u.getAddress())</span><br><span class="line">                   .map(a-&gt;a.getCity())</span><br><span class="line">                   .orElseThrow(()-&gt;new Exception(&quot;取指错误&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="栗子2"><a href="#栗子2" class="headerlink" title="栗子2"></a>栗子2</h5><ul>
-<li>使用前</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(user!=null)&#123;</span><br><span class="line">    dosomething(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 <ul>
-<li>使用后</li>
+<li>一位名叫 letsgowei 的大佬说：”在做更新操作时不可以更改数据库后直接更新缓存吗？这样最多也就一两次脏数据“</li>
+<li>——–这位大佬的疑惑应该是为什么更新操作只是删除缓存或者把缓存设置为无效，而不是更新缓存呢？还有一位评论有同样的疑惑；这个问题我没有考虑到，觉得他们说的有道理直接更新也可以啊？</li>
+<li>一位名叫 longsen 的大佬做出了解答：”1. 读线程查key未在cache中；2.读线程从db读数据；3.写线程更改数据库；4.写线程看key未在cache中，无法更新cache；5.读线程将旧数据写入cache中。这种场景旧数据可能在cache存在很长时间“</li>
+<li>——–大佬给出的解释是cache中没有key无法更新，I don’t think so！至少在Redis的环境下是不存在的，key不存在直接set，key存在直接覆盖，Redis是有这样的命令的，所以这个回答我不同意，如果将写MySQL后将Redis中的key删除的操作，改成更新Redis的Key操作，这样一来就和我上面提到的场景2是一样的的了，读写都更新Redis增加了产生脏数据的概率，所以是不可取的</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional.ofNullable(user)</span><br><span class="line">        .ifPresent(u-&gt;&#123;</span><br><span class="line">           dosomething(u);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="栗子3"><a href="#栗子3" class="headerlink" title="栗子3"></a>栗子3</h5><ul>
-<li>使用前</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public User getUser(User user) throws Exception&#123;</span><br><span class="line">	if(user!=null)&#123;</span><br><span class="line">	    String name = user.getName();</span><br><span class="line">	    if(&quot;zhangsan&quot;.equals(name))&#123;</span><br><span class="line">	        return user;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">	    user = new User();</span><br><span class="line">	    user.setName(&quot;zhangsan&quot;);</span><br><span class="line">	    return user;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 <ul>
-<li>使用后</li>
+<li>一位名叫 泪滴 的大佬说：”大神！你的这个更新顺序是建立在更新数据库，更新缓存都不会发生失败的情况下的，单独考虑并发问题得到的顺序！<br>方案1：先更新数据库，再删除缓存，当出现并发问题概率很小(假设概率为R1)，会造成脏数据。当出现网络等问题导致删除缓存失败(假设概率为R2)，会导致之后的请求一直是脏数据。<br>方案2：先删除缓存，再更新数据库，当出现并发问题概率较大(假设概率为R3)，会导致之后的请求一直是脏数据，当出现网络问题，删除缓存成功，更新数据库失败，只会引发一次cache miss，在业务上基本没啥影响。当然为了弥补，我们一般都会设置缓存的过期时间，来缩短出现脏数据的时间。现在问题的关键就是R1+R2和R3的大小问题了，如果大厂，网络基础设施啥的比较牛，当然R1+R2&lt;R3选择方案1比较合适，对于广大小厂来说还真的可能R1+R2&gt;R3那怎么选择，就比较清楚了。“</li>
+<li>——–说实话，他的评论让我眼前一亮，他的分析具体到了应用场景上，而且确实有这样的情况出现，所以说没有最完美的设计只有最合适的设计，给这位大佬点赞</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public User getUser(User user) &#123;</span><br><span class="line">    return Optional.ofNullable(user)</span><br><span class="line">                   .filter(u-&gt;&quot;zhangsan&quot;.equals(u.getName()))</span><br><span class="line">                   .orElseGet(()-&gt; &#123;</span><br><span class="line">                        User user1 = new User();</span><br><span class="line">                        user1.setName(&quot;zhangsan&quot;);</span><br><span class="line">                        return user1;</span><br><span class="line">                   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>还有一些则是针对于原文中Write Behind Caching Pattern部分的流程图的疑问，例如缓存未命中为什么回写数据再更新数据，直接更新数据不就好了吗？写数据未命中为什么还有判断dirty的标志？等等，这些问题我也不懂，云里雾里的，不知道为什么这么设计，不就是异步更新MySQL吗，搞这么复杂是为什么，后来我冷静的分析一下，这篇文章是缓存更新的套路，当前部分是缓存异步更新MySQL的介绍，而流程图和异步半毛钱关系都没有，为什么？</li>
+<li>——–因为我太垃圾了，文章中 xxPattern 指的是Linux内核中的缓存更新模式，作者是将这些模式应用到分布式环境下缓存更新中，所以说这部分的流程图是指Linux内核的缓存更新而不是分布式环境下的缓存更新，作者在文章中不止一次提到了基础很重要就体现出来了，而且作者也提到宏观的系统架构设计其实和计算机系统结构中微观的设计是相似的，所以想要设计好一个大型的分布式系统必须对计算机系统结构非常了解</li>
+</ul>
+<hr>
+<p>综上所述–基础很重要</p>
+<p>以上是我拜读耗子哥的<a href="https://coolshell.cn/articles/17416.html" target="_blank" rel="noopener">《缓存更新的套路》</a>一文后的一些总结和思考，推荐大家读原文哦！</p>
+
       
     </div>
 
@@ -705,7 +636,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/08/15/Optional/" title="Optional 使用及源码">http://yoursite.com/2019/08/15/Optional/</a>
+    <a href="http://yoursite.com/2019/08/21/缓存更新的套路-总结与感受/" title="缓存更新的套路 总结与感受">http://yoursite.com/2019/08/21/缓存更新的套路-总结与感受/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -718,7 +649,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java8/" rel="tag"><i class="fa fa-tag"></i> Java8</a>
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
           
         </div>
       
@@ -786,8 +717,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/13/mac-设置/" rel="next" title="mac 设置">
-                <i class="fa fa-chevron-left"></i> mac 设置
+              <a href="/2019/08/16/一次Spring事务不回滚的踩坑记录/" rel="next" title="一次Spring事务不回滚的踩坑记录">
+                <i class="fa fa-chevron-left"></i> 一次Spring事务不回滚的踩坑记录
               </a>
             
           </div>
@@ -795,10 +726,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/16/一次Spring事务不回滚的踩坑记录/" rel="prev" title="一次Spring事务不回滚的踩坑记录">
-                一次Spring事务不回滚的踩坑记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1211,7 +1138,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional-使用及源码分析"><span class="nav-number">1.</span> <span class="nav-text">Optional 使用及源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成员变量"><span class="nav-number">1.1.</span> <span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">1.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要方法"><span class="nav-number">1.3.</span> <span class="nav-text">主要方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栗子"><span class="nav-number">1.5.</span> <span class="nav-text">栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#栗子1"><span class="nav-number">1.5.1.</span> <span class="nav-text">栗子1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栗子2"><span class="nav-number">1.5.2.</span> <span class="nav-text">栗子2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栗子3"><span class="nav-number">1.5.3.</span> <span class="nav-text">栗子3</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典方法-–-Cache-Aside-Pattern"><span class="nav-number">1.</span> <span class="nav-text">经典方法 – Cache Aside Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Write-Through-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Read/Write Through Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Behind-Caching-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Write Behind Caching Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精彩评论"><span class="nav-number">4.</span> <span class="nav-text">精彩评论</span></a></li></ol></div>
             
 
           </div>
