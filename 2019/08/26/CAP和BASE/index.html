@@ -119,13 +119,17 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YyWang&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/utils/index.html">
+  <meta name="description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAP和BASE">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/CAP和BASE/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
+<meta property="og:description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-26T08:53:00.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YyWang&#39;s Blog">
+<meta name="twitter:title" content="CAP和BASE">
+<meta name="twitter:description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
 
 
 
@@ -135,7 +139,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/utils/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/26/CAP和BASE/">
 
 
 
@@ -145,7 +149,7 @@
   };
 </script>
 
-  <title>标签: utils | YyWang's Blog</title>
+  <title>CAP和BASE | YyWang's Blog</title>
   
 
 
@@ -205,7 +209,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/panniyuyu//panniyuyu.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,7 +268,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -386,83 +390,353 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>utils<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/CAP和BASE/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YyWang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/headicon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YyWang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/07/26/StringUtils/" itemprop="url">
-            
-              <span itemprop="name">StringUtils</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">CAP和BASE
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-26T19:32:04+08:00" content="2019-07-26">
-          07-26
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-26 16:52:51 / 修改时间：16:53:00" itemprop="dateCreated datePublished" datetime="2019-08-26T16:52:51+08:00">2019-08-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/08/26/CAP和BASE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/CAP和BASE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h3><p>Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性）</p>
+<p>CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项</p>
+<ul>
+<li>Consistency 一致性<ul>
+<li>“all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，要求分布式系统数据发生改变后所有节点在后续的请求中都能感知到</li>
+<li>强一致性，当数据发生改变，系统中的其他节点在下次请求都会感知到</li>
+<li>弱一致性，保证某个时间级别（比如xx秒），数据能够达到数据一致的状态</li>
+<li>最终一致性，弱一致性的一个特例，保证在一段时间内达到数据一致的状态</li>
+</ul>
+</li>
+<li>Availability 可用性<ul>
+<li>“Reads and Writes always succeed”，这里的succeed指的是请求和响应的过程成功，也每次请求都会在有限的时间内收到回复，换句话说就是服务器可用；并不是请求的返回值是成功的意思，返回值是失败也是有返回值的，同样说明请求响应的过程是成功的。</li>
+<li>系统可用性5个9，意为分布式系统的可用水平为99.999%，全年停机时间不超过 <strong>(1-0.99999)<em>365</em>24*60 = 5.256 min</strong></li>
+</ul>
+</li>
+<li>Partition tolerance 分区容错性<ul>
+<li>“the system continues to operate despite arbitrary message loss or failure of part of the system” 分区指的是由于网络异常集群中只有部分节点能够正常通信，可能存在多个能够通信的子网络，这些子网络就是分区；又或者说集群中部分服务器宕机，其他服务器依然可用，这部分可用的服务器组成的子网络也可以称为分区。分区容错性是指当出现网络延迟或者故障的情况时系统依然能够提供服务</li>
+</ul>
+</li>
+</ul>
+<p>怎么理解呢？简单来说就是在分布式系统中发生故障时，CAP最多只能满足其中的两项，也就是CAP三选二呗，但是我们发现P（分区容错性）说白了就是指网络出问题后系统依然可用，这可是分布式系统的基础条件，应该必须满足；在满足分区容错性时有可能会存在两种问题</p>
+<ul>
+<li>1.用户访问部分服务器间的网络异常，这时只需将请求转发到可用的服务器即可，这时在理想情况下（服务器间的网络通畅）是可以满足CAP的，除非和所有服务器的网络都有问题（<strong>这只是理想情况</strong>）</li>
+<li>2.除了用户访问服务器的网络异常之外，分布式系统中不同服务器直接的网络也可能存在异常，例如分布式系统中有A、B两台服务器，假设A、B之间存在网络故障，当服务器A改变数据之后无法同步到服务器B，此时就不能保证强一致性和可用性同时满足<ul>
+<li>放弃强一致性（C），用户请求A可以得到最新的数据，用户请求B得到的是旧数据；可以保证用户每次请求都会返回结果，但不能保证数据的一致性</li>
+<li>放弃可用性（A），为了保证数据的强一致性，数据每次修改后都需要等待所有的数据源都同步后才能进行读写，用户请求服务器A或者B，由于数据始终不能同步，最后会一直阻塞下去，不能保证用户的每次都能短时间内得到返回值甚至得不到返回值</li>
+</ul>
+</li>
+</ul>
+<p>综上，我认为的CAP理论是在分布式系统中服务器之间网络出现问题时，CAP最多只能满足其二，并不是分布式系统就只能满足CAP中的两项，理想情况下是都可满足的（虽然现在不大可能）；况且在分布式系统中P是必须满足的，也就是说CA只能满足其一，具体的取舍需要根据不同的业务场景权衡</p>
+<h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h3><ul>
+<li>Basically Available（基本可用）<ul>
+<li>系统设计中可以牺牲部分可用性，比如允许响应时间增加1-2秒，服务降级等</li>
+</ul>
+</li>
+<li>Soft state（软状态）<ul>
+<li>允许系统中的数据存在中间状态，允许数据同步过程存在延迟</li>
+</ul>
+</li>
+<li>Eventually consistent（最终一致性）<ul>
+<li>所有数据再一段时间的数据同步后都能达到一致的状态 </li>
+</ul>
+</li>
+</ul>
+<p>综上，不同的业务以BASE理论为基础对可用性和一致性进行一个权衡；zk和数据库的主从都是舍弃高可用性；涉及到用户体验的场景则需要舍弃数据强一致性如12306买火车票，618和双11等对于用户的每个请求都需要给与响应，允许存在短时间数据不一致的状态</p>
+<p><a href="http://www.hollischuang.com/archives/666" target="_blank" rel="noopener">参考资料</a></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>如果文章对您有帮助不妨打赏一下作者</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="YyWang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="YyWang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>YyWang</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2019/08/26/CAP和BASE/" title="CAP和BASE">http://yoursite.com/2019/08/26/CAP和BASE/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/21/缓存更新的套路-总结与感受/" rel="next" title="缓存更新的套路 总结与感受">
+                <i class="fa fa-chevron-left"></i> 缓存更新的套路 总结与感受
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -482,8 +756,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -828,6 +1111,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP理论"><span class="nav-number">1.</span> <span class="nav-text">CAP理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BASE理论"><span class="nav-number">2.</span> <span class="nav-text">BASE理论</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
       
@@ -1019,6 +1319,14 @@ setInterval("createtime()",250);
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+<script type="text/javascript" src="/js/src/photoswipe.min.js?v="></script>
+<script type="text/javascript" src="/js/src/photoswipe-ui-default.min.js?v="></script>
+
+
+
 
   
 
@@ -1064,6 +1372,8 @@ setInterval("createtime()",250);
 
 
 
+
+  
 
 
   

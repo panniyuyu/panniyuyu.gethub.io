@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-21T06:57:48.631Z</updated>
+  <updated>2019-08-26T08:53:00.039Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CAP和BASE</title>
+    <link href="http://yoursite.com/2019/08/26/CAP%E5%92%8CBASE/"/>
+    <id>http://yoursite.com/2019/08/26/CAP和BASE/</id>
+    <published>2019-08-26T08:52:51.000Z</published>
+    <updated>2019-08-26T08:53:00.039Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h3><p>Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性）</p><p>CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项</p><ul><li>Consistency 一致性<ul><li>“all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，要求分布式系统数据发生改变后所有节点在后续的请求中都能感知到</li><li>强一致性，当数据发生改变，系统中的其他节点在下次请求都会感知到</li><li>弱一致性，保证某个时间级别（比如xx秒），数据能够达到数据一致的状态</li><li>最终一致性，弱一致性的一个特例，保证在一段时间内达到数据一致的状态</li></ul></li><li>Availability 可用性<ul><li>“Reads and Writes always succeed”，这里的succeed指的是请求和响应的过程成功，也每次请求都会在有限的时间内收到回复，换句话说就是服务器可用；并不是请求的返回值是成功的意思，返回值是失败也是有返回值的，同样说明请求响应的过程是成功的。</li><li>系统可用性5个9，意为分布式系统的可用水平为99.999%，全年停机时间不超过 <strong>(1-0.99999)<em>365</em>24*60 = 5.256 min</strong></li></ul></li><li>Partition tolerance 分区容错性<ul><li>“the system continues to operate despite arbitrary message loss or failure of part of the system” 分区指的是由于网络异常集群中只有部分节点能够正常通信，可能存在多个能够通信的子网络，这些子网络就是分区；又或者说集群中部分服务器宕机，其他服务器依然可用，这部分可用的服务器组成的子网络也可以称为分区。分区容错性是指当出现网络延迟或者故障的情况时系统依然能够提供服务</li></ul></li></ul><p>怎么理解呢？简单来说就是在分布式系统中发生故障时，CAP最多只能满足其中的两项，也就是CAP三选二呗，但是我们发现P（分区容错性）说白了就是指网络出问题后系统依然可用，这可是分布式系统的基础条件，应该必须满足；在满足分区容错性时有可能会存在两种问题</p><ul><li>1.用户访问部分服务器间的网络异常，这时只需将请求转发到可用的服务器即可，这时在理想情况下（服务器间的网络通畅）是可以满足CAP的，除非和所有服务器的网络都有问题（<strong>这只是理想情况</strong>）</li><li>2.除了用户访问服务器的网络异常之外，分布式系统中不同服务器直接的网络也可能存在异常，例如分布式系统中有A、B两台服务器，假设A、B之间存在网络故障，当服务器A改变数据之后无法同步到服务器B，此时就不能保证强一致性和可用性同时满足<ul><li>放弃强一致性（C），用户请求A可以得到最新的数据，用户请求B得到的是旧数据；可以保证用户每次请求都会返回结果，但不能保证数据的一致性</li><li>放弃可用性（A），为了保证数据的强一致性，数据每次修改后都需要等待所有的数据源都同步后才能进行读写，用户请求服务器A或者B，由于数据始终不能同步，最后会一直阻塞下去，不能保证用户的每次都能短时间内得到返回值甚至得不到返回值</li></ul></li></ul><p>综上，我认为的CAP理论是在分布式系统中服务器之间网络出现问题时，CAP最多只能满足其二，并不是分布式系统就只能满足CAP中的两项，理想情况下是都可满足的（虽然现在不大可能）；况且在分布式系统中P是必须满足的，也就是说CA只能满足其一，具体的取舍需要根据不同的业务场景权衡</p><h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h3><ul><li>Basically Available（基本可用）<ul><li>系统设计中可以牺牲部分可用性，比如允许响应时间增加1-2秒，服务降级等</li></ul></li><li>Soft state（软状态）<ul><li>允许系统中的数据存在中间状态，允许数据同步过程存在延迟</li></ul></li><li>Eventually consistent（最终一致性）<ul><li>所有数据再一段时间的数据同步后都能达到一致的状态 </li></ul></li></ul><p>综上，不同的业务以BASE理论为基础对可用性和一致性进行一个权衡；zk和数据库的主从都是舍弃高可用性；涉及到用户体验的场景则需要舍弃数据强一致性如12306买火车票，618和双11等对于用户的每个请求都需要给与响应，允许存在短时间数据不一致的状态</p><p><a href="http://www.hollischuang.com/archives/666" target="_blank" rel="noopener">参考资料</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;CAP理论&quot;&gt;&lt;a href=&quot;#CAP理论&quot; class=&quot;headerlink&quot; title=&quot;CAP理论&quot;&gt;&lt;/a&gt;CAP理论&lt;/h3&gt;&lt;p&gt;Consistency（一致性） Availability（可用性） Partition tolerance（分区容
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>缓存更新的套路 总结与感受</title>
