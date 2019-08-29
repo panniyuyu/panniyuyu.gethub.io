@@ -119,18 +119,18 @@
 
 
 
-  <meta name="description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
-<meta name="keywords" content="Spring">
+  <meta name="description" content="Zookeeper是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我来说太抽象了，很难理解，只知道它能提供一些服务能够实现配置管理、命名服务、分布式锁等等，也就是在这些场景下会使用到ZK，这样说好像还是很难理解；之后，我找到了一个比较好理解的点，就是从CAP理论的角度，这需要对CAP有些了解，提前做了功课(CAP和BASE)，简单来说在分布式系统中出现网络故障时，">
+<meta name="keywords" content="分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一次Spring事务不回滚的踩坑记录">
-<meta property="og:url" content="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/index.html">
+<meta property="og:title" content="Zookeeper扫盲">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/Zookeeper扫盲/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
+<meta property="og:description" content="Zookeeper是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我来说太抽象了，很难理解，只知道它能提供一些服务能够实现配置管理、命名服务、分布式锁等等，也就是在这些场景下会使用到ZK，这样说好像还是很难理解；之后，我找到了一个比较好理解的点，就是从CAP理论的角度，这需要对CAP有些了解，提前做了功课(CAP和BASE)，简单来说在分布式系统中出现网络故障时，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T13:02:23.912Z">
+<meta property="og:updated_time" content="2019-08-29T07:24:51.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一次Spring事务不回滚的踩坑记录">
-<meta name="twitter:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
+<meta name="twitter:title" content="Zookeeper扫盲">
+<meta name="twitter:description" content="Zookeeper是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我来说太抽象了，很难理解，只知道它能提供一些服务能够实现配置管理、命名服务、分布式锁等等，也就是在这些场景下会使用到ZK，这样说好像还是很难理解；之后，我找到了一个比较好理解的点，就是从CAP理论的角度，这需要对CAP有些了解，提前做了功课(CAP和BASE)，简单来说在分布式系统中出现网络故障时，">
 
 
 
@@ -140,7 +140,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/Zookeeper扫盲/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>一次Spring事务不回滚的踩坑记录 | YyWang's Blog</title>
+  <title>Zookeeper扫盲 | YyWang's Blog</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/Zookeeper扫盲/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YyWang">
@@ -428,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一次Spring事务不回滚的踩坑记录
+          <h1 class="post-title" itemprop="name headline">Zookeeper扫盲
 
               
             
@@ -454,7 +454,7 @@
                 
               
 
-              <time title="创建时间：2019-08-16 21:01:13 / 修改时间：21:02:23" itemprop="dateCreated datePublished" datetime="2019-08-16T21:01:13+08:00">2019-08-16</time>
+              <time title="创建时间：2019-08-29 15:23:15 / 修改时间：15:24:51" itemprop="dateCreated datePublished" datetime="2019-08-29T15:23:15+08:00">2019-08-29</time>
             
 
             
@@ -464,6 +464,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -477,8 +495,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/16/一次Spring事务不回滚的踩坑记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/16/一次Spring事务不回滚的踩坑记录/" itemprop="commentCount"></span>
+                <a href="/2019/08/29/Zookeeper扫盲/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Zookeeper扫盲/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -513,24 +531,53 @@
       
 
       
-        <h3 id="一次Spring事务不回滚的踩坑记录"><a href="#一次Spring事务不回滚的踩坑记录" class="headerlink" title="一次Spring事务不回滚的踩坑记录"></a>一次Spring事务不回滚的踩坑记录</h3><p>Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检查代码没有发现错误，那咋办呢？开始百度吧，百度的结果千篇一律，都是针对不了解Spring默认捕获unchecked异常的解决办法，这些早已在我的经验里了，有3种方法</p>
+        <h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3><p>是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我来说太抽象了，很难理解，只知道它能提供一些服务能够实现配置管理、命名服务、分布式锁等等，也就是在这些场景下会使用到ZK，这样说好像还是很难理解；之后，我找到了一个比较好理解的点，就是从CAP理论的角度，这需要对CAP有些了解，提前做了功课(<a href="http://yywang.top/2019/08/26/CAP%E5%92%8CBASE/#more" target="_blank" rel="noopener">CAP和BASE</a>)，简单来说在分布式系统中出现网络故障时，最多满足其中的两项，而P是必须要满足的，那么就需要从CP和AP中做选择了；ZK就是可保证CP的框架，最后我的理解就是ZK通过特定的数据结构，封装一系列算法通过API的方式提供分布式环境数据一致性的服务，所有需要数据一致性的场景都可以使用ZK，也就是上面提到的配置管理、命名服务、分布式锁等等场景</p>
+<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>ZK提供了一套类似于文件目录的数据结构，叫做多层级的节点命名空间，每个节点（ZK中称为znode）都可以存放数据且每个节点下都有若干个子节点，听起来和树的结构差不多，其实也一样，目录也是一种树结构的实现，znode可以理解为文件夹，文件夹中可以存放文件（znode可以存放数据），也可以存放文件夹（znode也可以存放znode）</p>
+<h5 id="znode的类型"><a href="#znode的类型" class="headerlink" title="znode的类型"></a>znode的类型</h5><ul>
+<li>PERSISTENT–持久化目录节点<ul>
+<li>客户端和ZK断开连接后节点依然存在</li>
+</ul>
+</li>
+<li>PERSISTENT_SEQUENTIAL–持久化顺序编号目录节点<ul>
+<li>与持久化目录节点相同，只是多了ZK对节点的顺序编号</li>
+</ul>
+</li>
+<li>EPHEMERAL–临时目录节点<ul>
+<li>客户端和ZK断开连接后节点被删除</li>
+</ul>
+</li>
+<li>EPHEMERAL_SEQUENTIAL–临时顺序编号目录节点<ul>
+<li>与临时目录节点相同，只是多了ZK对节点的顺序编号 </li>
+</ul>
+</li>
+</ul>
+<h4 id="通知机制"><a href="#通知机制" class="headerlink" title="通知机制"></a>通知机制</h4><p>ZK还提供了类似于观察这模式的通知机制，称为watcher事件，可以观察到znode的变化，来通知客户端，之后客户端再做相应的业务逻辑</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="命名服务"><a href="#命名服务" class="headerlink" title="命名服务"></a>命名服务</h4><p>这里命名服务指的是通过指定名字获取对应的资源，将资源存储在特定路径的znode中，根据路径就可以找到资源，类比目录结构来说，拿到文件的地址就能通过地址来找到文件，有点像是URL的意思，但是由于ZK数据结构设计的因素ZK不能存放较大的数据；微服务框架中的注册中心需要存放provider和consumer的信息，并且consumer要能够感知provider的实时状态，ZK可以根据provider和consumer的地址映射成临时znode结构，这样既保存了provider和consumer的信息还能感知彼此的状态</p>
+<h4 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h4><p>一句话解释—-动态下发配置文件变化；通过ZK客户端watch配置文件，一旦配置文件发生变化马上通知客户端做对应的处理</p>
+<h4 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h4><p>多个客户端再ZK的同一个目录下尝试创建临时znode，成功创建znode意味着获得锁成功，下个客户端发现目录下已经存在znode则对该znode添加watch机制，当znode消失即为释放锁后，通知客户端尝试创建znode来获取锁，这是公平锁；非公平锁的则创建临时有序的znode，相当于一个队列，后面的节点watch前一个节点的znode的状态，队头的znode为获得锁成功的几点</p>
+<h3 id="选举算法"><a href="#选举算法" class="headerlink" title="选举算法"></a>选举算法</h3><h4 id="ZK节点的状态"><a href="#ZK节点的状态" class="headerlink" title="ZK节点的状态"></a>ZK节点的状态</h4><ul>
+<li>LOOKING–当前节点不知道leader是谁，正在搜索</li>
+<li>LEADING–当前节点为集群的leader</li>
+<li>FOLLOWING–目前已有leader，当前节点负责与leader节点同步</li>
+</ul>
+<h4 id="选举过程"><a href="#选举过程" class="headerlink" title="选举过程"></a>选举过程</h4><p>在两种情况下会进行选举，1.服务器初始化启动 2.集群中leader节点故障</p>
+<p>起初集群中的节点没有leader或者不知道leader是谁，此时节点的状态为LOOKING，如果当前集群存在leader（该节点新加入集群），此节点发送投票信息想要选举leader会被告知当前leader的信息，此节点只需和leader节点建立连接，并进行状态同步即可；</p>
+<p>如果当前集群不存在leader节点，则需要投票进行选举</p>
 <ul>
-<li>1.手动抛出unchecked异常，让Spring去捕获，然后自动回滚数据</li>
-<li>2.手动回滚，在发生异常的地方添加代码 <strong>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</strong></li>
-<li>3.在注解的地方添加配置<strong>rollbackFor = { Exception.class }</strong>，让Spring在捕获到特定的异常自动回滚数据 </li>
+<li>此时所有节点皆为LOOKING状态，并编辑投票信息发送给集群的其他节点，投票信息的格式为（SID,ZXID）（服务器的唯一标识，事务ID），SID是自己配置的，ZXID理解为当前节点数据的版本；</li>
+<li>集群中的节点会受到其他节点的投票信息，加上自己的那一票会根据一个规则会投出第二轮的选票<ul>
+<li>节点会在自己收到的选票中，选择ZXID最大的作为第二轮的选票发送给集群中其他节点</li>
+<li>如果ZXID相同则选择SID最大的作为第二轮的选票发送给集群中其他节点</li>
 </ul>
-<p>3种方法我都知道，但是我一般只用第一种，因为简单，这次我选择用第二种方法试下，竟然没问题了，我意识到是我的问题了，开始检查代码，我的代码逻辑如下（见笑）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">    result = false;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还是不知道错在哪里，没有办法开始Debug，惊奇的发现RuntimeException竟然被忽略了，这才发现我finally中有return，被我自己蠢哭了，基础真是太重要了，我还盲目自信的知道Spring的事务如何使用，到头来连try catch finally都没搞清楚，真是太蠢了。接着我修改了代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">&#125; </span><br><span class="line">return result;</span><br></pre></td></tr></table></figure>
-<p>这下确实是回滚了，但是返回值是true，想得到的时false，这又难受了，再次Debug，很多次F6后我明白了，RuntimeException是被Spring框架里的层层代理catch了————————————————————————————————————————————————————————————–<br>我把我自己给骗了，RuntimeException抛出程序已经终止了，即使再多的catch最后也不会回到result = true那一行，最终得出原因是其他ajax请求的结果返回到了前台给的提示让我误解了</p>
-<hr>
-<p>到这里我意识到自己是真的菜，补习一下try catch finally吧<br>找到<a href="https://blog.csdn.net/mxd446814583/article/details/80355572" target="_blank" rel="noopener">一篇好文</a></p>
-<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><ul>
-<li>如果finally中有return，try和catch中的return会失效，并且<strong>catch中即使抛出unchecked异常也同样会失效</strong>（这是今天踩的坑）；如果finally中有异常相当于整个方法有了异常，那么就没有最终的返回值了,catch中有了异常同样的效果，所以catch和finally中不要出现异常</li>
-<li>如果finally中没有return，try和catch中走最先到达return逻辑的地方，并且在return前将返回值暂存，即使finally中修改也不会有效果；（也就是说没有异常最先到达try块中的return，返回值是try块的返回值，catch和finally修改也不会生效；如果try块有异常最先到达catch块中的return，返回值是catch块的返回值，前提是catch块中没有异常，有异常整个方法都没有返回值）</li>
-<li>综上所述，<strong>使用Spring事务避免不出错优先使用方法2和方法3，方法1比较绕并且对有返回值的逻辑不是很友好；finally块中尽量不要return，这样会忽略try和catch中的异常；最后，基础真的很重要</strong></li>
+</li>
+<li>集群中的节点在接收到第二轮选票后进行统计（包含自己的一票），获得集群中一半以上（&gt;n/2）数量投票的节点当选leader进入LEADING状态，其余节点进入FOLLOWING状态</li>
 </ul>
+<p>总结一下，集群中要获得一半以上的投票才能当选leader，所以集群最少为3台，并且数量是奇数；集群中ZXID越大的节点（当前节点数据版本越新）优先当选leader</p>
+<h3 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h3><p>整个过程没有难度也很好理解，跟着<a href="https://www.jianshu.com/p/5491d16e6abd" target="_blank" rel="noopener">这篇文章</a>做就完事了</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>本文是对于Zookeeper的扫盲，大致了解ZK的基本原理，为了更好的理解工作中的项目，具有目的性，一些细节没有去研究，下回再补，😋</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://jm.taobao.org/2011/10/08/1232/" target="_blank" rel="noopener">ZooKeeper典型应用场景一览</a></p>
+<p><a href="https://www.jianshu.com/p/5491d16e6abd" target="_blank" rel="noopener">笔记：Mac上zookeeper的安装与启动</a></p>
+<p><a href="https://segmentfault.com/a/1190000014479433?utm_source=tag-newest" target="_blank" rel="noopener">zookeeper面试题</a></p>
 
       
     </div>
@@ -598,7 +645,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/" title="一次Spring事务不回滚的踩坑记录">http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/</a>
+    <a href="http://yoursite.com/2019/08/29/Zookeeper扫盲/" title="Zookeeper扫盲">http://yoursite.com/2019/08/29/Zookeeper扫盲/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -611,7 +658,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
           
         </div>
       
@@ -679,8 +726,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/15/Optional/" rel="next" title="Optional 使用及源码">
-                <i class="fa fa-chevron-left"></i> Optional 使用及源码
+              <a href="/2019/08/26/CAP和BASE/" rel="next" title="CAP和BASE">
+                <i class="fa fa-chevron-left"></i> CAP和BASE
               </a>
             
           </div>
@@ -688,10 +735,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/21/缓存更新的套路-总结与感受/" rel="prev" title="缓存更新的套路 总结与感受">
-                缓存更新的套路 总结与感受 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1108,7 +1151,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一次Spring事务不回滚的踩坑记录"><span class="nav-number">1.</span> <span class="nav-text">一次Spring事务不回滚的踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一下"><span class="nav-number">2.</span> <span class="nav-text">总结一下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper"><span class="nav-number">1.</span> <span class="nav-text">Zookeeper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门"><span class="nav-number">2.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">2.1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#znode的类型"><span class="nav-number">2.1.1.</span> <span class="nav-text">znode的类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通知机制"><span class="nav-number">2.2.</span> <span class="nav-text">通知机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">3.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名服务"><span class="nav-number">3.1.</span> <span class="nav-text">命名服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置管理"><span class="nav-number">3.2.</span> <span class="nav-text">配置管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式锁"><span class="nav-number">3.3.</span> <span class="nav-text">分布式锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选举算法"><span class="nav-number">4.</span> <span class="nav-text">选举算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ZK节点的状态"><span class="nav-number">4.1.</span> <span class="nav-text">ZK节点的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选举过程"><span class="nav-number">4.2.</span> <span class="nav-text">选举过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装与启动"><span class="nav-number">5.</span> <span class="nav-text">安装与启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

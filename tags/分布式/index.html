@@ -119,18 +119,13 @@
 
 
 
-  <meta name="description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
-<meta name="keywords" content="Spring">
-<meta property="og:type" content="article">
-<meta property="og:title" content="一次Spring事务不回滚的踩坑记录">
-<meta property="og:url" content="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="YyWang&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/分布式/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T13:02:23.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一次Spring事务不回滚的踩坑记录">
-<meta name="twitter:description" content="一次Spring事务不回滚的踩坑记录Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检">
+<meta name="twitter:title" content="YyWang&#39;s Blog">
 
 
 
@@ -140,7 +135,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
+  <link rel="canonical" href="http://yoursite.com/tags/分布式/">
 
 
 
@@ -150,7 +145,7 @@
   };
 </script>
 
-  <title>一次Spring事务不回滚的踩坑记录 | YyWang's Blog</title>
+  <title>标签: 分布式 | YyWang's Blog</title>
   
 
 
@@ -210,7 +205,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
     <a href="https://github.com/panniyuyu//panniyuyu.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,7 +264,7 @@
         
         
           
-          <li class="menu-item menu-item-tags">
+          <li class="menu-item menu-item-tags menu-item-active">
 
     
     
@@ -391,335 +386,109 @@
           
             
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
           
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>分布式<small>标签</small>
+        </h1>
+      </div>
 
-  
-  
-  
-
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YyWang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/headicon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YyWang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+          <a class="post-title-link" href="/2019/08/29/Zookeeper扫盲/" itemprop="url">
+            
+              <span itemprop="name">Zookeeper扫盲</span>
+            
+          </a>
         
-          <h1 class="post-title" itemprop="name headline">一次Spring事务不回滚的踩坑记录
+      </h2>
 
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-16 21:01:13 / 修改时间：21:02:23" itemprop="dateCreated datePublished" datetime="2019-08-16T21:01:13+08:00">2019-08-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/16/一次Spring事务不回滚的踩坑记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/16/一次Spring事务不回滚的踩坑记录/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="一次Spring事务不回滚的踩坑记录"><a href="#一次Spring事务不回滚的踩坑记录" class="headerlink" title="一次Spring事务不回滚的踩坑记录"></a>一次Spring事务不回滚的踩坑记录</h3><p>Spring事务不回滚八成是不知道Spring默认在捕获到unchecked异常才会自动回滚，然而我早已踩过个坑，是一个有经验的人，当我自信满满的加上一行 1/0，并在catch中 throw new RuntimeException，debug之后我懵了，咋不回滚呢？重启Tomcat，浏览器缓存清理之后再试一次，还是不行！！！我就难受了，这和我预想的不一样，检查代码没有发现错误，那咋办呢？开始百度吧，百度的结果千篇一律，都是针对不了解Spring默认捕获unchecked异常的解决办法，这些早已在我的经验里了，有3种方法</p>
-<ul>
-<li>1.手动抛出unchecked异常，让Spring去捕获，然后自动回滚数据</li>
-<li>2.手动回滚，在发生异常的地方添加代码 <strong>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</strong></li>
-<li>3.在注解的地方添加配置<strong>rollbackFor = { Exception.class }</strong>，让Spring在捕获到特定的异常自动回滚数据 </li>
-</ul>
-<p>3种方法我都知道，但是我一般只用第一种，因为简单，这次我选择用第二种方法试下，竟然没问题了，我意识到是我的问题了，开始检查代码，我的代码逻辑如下（见笑）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">    result = false;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还是不知道错在哪里，没有办法开始Debug，惊奇的发现RuntimeException竟然被忽略了，这才发现我finally中有return，被我自己蠢哭了，基础真是太重要了，我还盲目自信的知道Spring的事务如何使用，到头来连try catch finally都没搞清楚，真是太蠢了。接着我修改了代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean result = false;</span><br><span class="line">try &#123;</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    System.out.println(1/0);</span><br><span class="line">    // ...业务逻辑</span><br><span class="line">    result = true;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    LOGGER.error(e.getMessage(), e);</span><br><span class="line">    // rollback</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">&#125; </span><br><span class="line">return result;</span><br></pre></td></tr></table></figure>
-<p>这下确实是回滚了，但是返回值是true，想得到的时false，这又难受了，再次Debug，很多次F6后我明白了，RuntimeException是被Spring框架里的层层代理catch了————————————————————————————————————————————————————————————–<br>我把我自己给骗了，RuntimeException抛出程序已经终止了，即使再多的catch最后也不会回到result = true那一行，最终得出原因是其他ajax请求的结果返回到了前台给的提示让我误解了</p>
-<hr>
-<p>到这里我意识到自己是真的菜，补习一下try catch finally吧<br>找到<a href="https://blog.csdn.net/mxd446814583/article/details/80355572" target="_blank" rel="noopener">一篇好文</a></p>
-<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><ul>
-<li>如果finally中有return，try和catch中的return会失效，并且<strong>catch中即使抛出unchecked异常也同样会失效</strong>（这是今天踩的坑）；如果finally中有异常相当于整个方法有了异常，那么就没有最终的返回值了,catch中有了异常同样的效果，所以catch和finally中不要出现异常</li>
-<li>如果finally中没有return，try和catch中走最先到达return逻辑的地方，并且在return前将返回值暂存，即使finally中修改也不会有效果；（也就是说没有异常最先到达try块中的return，返回值是try块的返回值，catch和finally修改也不会生效；如果try块有异常最先到达catch块中的return，返回值是catch块的返回值，前提是catch块中没有异常，有异常整个方法都没有返回值）</li>
-<li>综上所述，<strong>使用Spring事务避免不出错优先使用方法2和方法3，方法1比较绕并且对有返回值的逻辑不是很友好；finally块中尽量不要return，这样会忽略try和catch中的异常；最后，基础真的很重要</strong></li>
-</ul>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-      <div>
-        <div id="reward-container">
-  <div>如果文章对您有帮助不妨打赏一下作者</div>
-  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/wechatpay.png" alt="YyWang 微信支付">
-        <p>微信支付</p>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-08-29T15:23:15+08:00" content="2019-08-29">
+          08-29
+        </time>
       </div>
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/alipay.png" alt="YyWang 支付宝">
-        <p>支付宝</p>
-      </div>
-    
 
-  </div>
-</div>
-
-      </div>
-    
-
-    
-      <div>
-        
-
-
-
-
-  
-
-
-
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>YyWang</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    
-    <a href="http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/" title="一次Spring事务不回滚的踩坑记录">http://yoursite.com/2019/08/16/一次Spring事务不回滚的踩坑记录/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-          
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
-          
-          <div class="social_share">
-            
-            
-            
-              <div>
-                
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-              </div>
-            
-          </div>
-        
-        </div>
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/15/Optional/" rel="next" title="Optional 使用及源码">
-                <i class="fa fa-chevron-left"></i> Optional 使用及源码
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/21/缓存更新的套路-总结与感受/" rel="prev" title="缓存更新的套路 总结与感受">
-                缓存更新的套路 总结与感受 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/08/26/CAP和BASE/" itemprop="url">
+            
+              <span itemprop="name">CAP和BASE</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-08-26T16:52:51+08:00" content="2019-08-26">
+          08-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+    </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-
-  
-
-
 
         </div>
         
@@ -739,17 +508,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1098,23 +858,6 @@
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一次Spring事务不回滚的踩坑记录"><span class="nav-number">1.</span> <span class="nav-text">一次Spring事务不回滚的踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一下"><span class="nav-number">2.</span> <span class="nav-text">总结一下</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
       
       
@@ -1306,14 +1049,6 @@ setInterval("createtime()",250);
 
 
   
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-<script type="text/javascript" src="/js/src/photoswipe.min.js?v="></script>
-<script type="text/javascript" src="/js/src/photoswipe-ui-default.min.js?v="></script>
-
-
-
 
   
 
@@ -1359,8 +1094,6 @@ setInterval("createtime()",250);
 
 
 
-
-  
 
 
   

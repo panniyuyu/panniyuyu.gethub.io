@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-26T08:53:00.039Z</updated>
+  <updated>2019-08-29T07:24:51.226Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Zookeeper扫盲</title>
+    <link href="http://yoursite.com/2019/08/29/Zookeeper%E6%89%AB%E7%9B%B2/"/>
+    <id>http://yoursite.com/2019/08/29/Zookeeper扫盲/</id>
+    <published>2019-08-29T07:23:15.000Z</published>
+    <updated>2019-08-29T07:24:51.226Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3><p>是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我来说太抽象了，很难理解，只知道它能提供一些服务能够实现配置管理、命名服务、分布式锁等等，也就是在这些场景下会使用到ZK，这样说好像还是很难理解；之后，我找到了一个比较好理解的点，就是从CAP理论的角度，这需要对CAP有些了解，提前做了功课(<a href="http://yywang.top/2019/08/26/CAP%E5%92%8CBASE/#more" target="_blank" rel="noopener">CAP和BASE</a>)，简单来说在分布式系统中出现网络故障时，最多满足其中的两项，而P是必须要满足的，那么就需要从CP和AP中做选择了；ZK就是可保证CP的框架，最后我的理解就是ZK通过特定的数据结构，封装一系列算法通过API的方式提供分布式环境数据一致性的服务，所有需要数据一致性的场景都可以使用ZK，也就是上面提到的配置管理、命名服务、分布式锁等等场景</p><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>ZK提供了一套类似于文件目录的数据结构，叫做多层级的节点命名空间，每个节点（ZK中称为znode）都可以存放数据且每个节点下都有若干个子节点，听起来和树的结构差不多，其实也一样，目录也是一种树结构的实现，znode可以理解为文件夹，文件夹中可以存放文件（znode可以存放数据），也可以存放文件夹（znode也可以存放znode）</p><h5 id="znode的类型"><a href="#znode的类型" class="headerlink" title="znode的类型"></a>znode的类型</h5><ul><li>PERSISTENT–持久化目录节点<ul><li>客户端和ZK断开连接后节点依然存在</li></ul></li><li>PERSISTENT_SEQUENTIAL–持久化顺序编号目录节点<ul><li>与持久化目录节点相同，只是多了ZK对节点的顺序编号</li></ul></li><li>EPHEMERAL–临时目录节点<ul><li>客户端和ZK断开连接后节点被删除</li></ul></li><li>EPHEMERAL_SEQUENTIAL–临时顺序编号目录节点<ul><li>与临时目录节点相同，只是多了ZK对节点的顺序编号 </li></ul></li></ul><h4 id="通知机制"><a href="#通知机制" class="headerlink" title="通知机制"></a>通知机制</h4><p>ZK还提供了类似于观察这模式的通知机制，称为watcher事件，可以观察到znode的变化，来通知客户端，之后客户端再做相应的业务逻辑</p><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="命名服务"><a href="#命名服务" class="headerlink" title="命名服务"></a>命名服务</h4><p>这里命名服务指的是通过指定名字获取对应的资源，将资源存储在特定路径的znode中，根据路径就可以找到资源，类比目录结构来说，拿到文件的地址就能通过地址来找到文件，有点像是URL的意思，但是由于ZK数据结构设计的因素ZK不能存放较大的数据；微服务框架中的注册中心需要存放provider和consumer的信息，并且consumer要能够感知provider的实时状态，ZK可以根据provider和consumer的地址映射成临时znode结构，这样既保存了provider和consumer的信息还能感知彼此的状态</p><h4 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h4><p>一句话解释—-动态下发配置文件变化；通过ZK客户端watch配置文件，一旦配置文件发生变化马上通知客户端做对应的处理</p><h4 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h4><p>多个客户端再ZK的同一个目录下尝试创建临时znode，成功创建znode意味着获得锁成功，下个客户端发现目录下已经存在znode则对该znode添加watch机制，当znode消失即为释放锁后，通知客户端尝试创建znode来获取锁，这是公平锁；非公平锁的则创建临时有序的znode，相当于一个队列，后面的节点watch前一个节点的znode的状态，队头的znode为获得锁成功的几点</p><h3 id="选举算法"><a href="#选举算法" class="headerlink" title="选举算法"></a>选举算法</h3><h4 id="ZK节点的状态"><a href="#ZK节点的状态" class="headerlink" title="ZK节点的状态"></a>ZK节点的状态</h4><ul><li>LOOKING–当前节点不知道leader是谁，正在搜索</li><li>LEADING–当前节点为集群的leader</li><li>FOLLOWING–目前已有leader，当前节点负责与leader节点同步</li></ul><h4 id="选举过程"><a href="#选举过程" class="headerlink" title="选举过程"></a>选举过程</h4><p>在两种情况下会进行选举，1.服务器初始化启动 2.集群中leader节点故障</p><p>起初集群中的节点没有leader或者不知道leader是谁，此时节点的状态为LOOKING，如果当前集群存在leader（该节点新加入集群），此节点发送投票信息想要选举leader会被告知当前leader的信息，此节点只需和leader节点建立连接，并进行状态同步即可；</p><p>如果当前集群不存在leader节点，则需要投票进行选举</p><ul><li>此时所有节点皆为LOOKING状态，并编辑投票信息发送给集群的其他节点，投票信息的格式为（SID,ZXID）（服务器的唯一标识，事务ID），SID是自己配置的，ZXID理解为当前节点数据的版本；</li><li>集群中的节点会受到其他节点的投票信息，加上自己的那一票会根据一个规则会投出第二轮的选票<ul><li>节点会在自己收到的选票中，选择ZXID最大的作为第二轮的选票发送给集群中其他节点</li><li>如果ZXID相同则选择SID最大的作为第二轮的选票发送给集群中其他节点</li></ul></li><li>集群中的节点在接收到第二轮选票后进行统计（包含自己的一票），获得集群中一半以上（&gt;n/2）数量投票的节点当选leader进入LEADING状态，其余节点进入FOLLOWING状态</li></ul><p>总结一下，集群中要获得一半以上的投票才能当选leader，所以集群最少为3台，并且数量是奇数；集群中ZXID越大的节点（当前节点数据版本越新）优先当选leader</p><h3 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h3><p>整个过程没有难度也很好理解，跟着<a href="https://www.jianshu.com/p/5491d16e6abd" target="_blank" rel="noopener">这篇文章</a>做就完事了</p><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>本文是对于Zookeeper的扫盲，大致了解ZK的基本原理，为了更好的理解工作中的项目，具有目的性，一些细节没有去研究，下回再补，😋</p><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://jm.taobao.org/2011/10/08/1232/" target="_blank" rel="noopener">ZooKeeper典型应用场景一览</a></p><p><a href="https://www.jianshu.com/p/5491d16e6abd" target="_blank" rel="noopener">笔记：Mac上zookeeper的安装与启动</a></p><p><a href="https://segmentfault.com/a/1190000014479433?utm_source=tag-newest" target="_blank" rel="noopener">zookeeper面试题</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Zookeeper&quot;&gt;&lt;a href=&quot;#Zookeeper&quot; class=&quot;headerlink&quot; title=&quot;Zookeeper&quot;&gt;&lt;/a&gt;Zookeeper&lt;/h3&gt;&lt;p&gt;是一个分布式协调服务框架，这句话对于刚接触ZK（Zookeeper下文简称ZK）的我
+      
+    
+    </summary>
+    
+      <category term="分布式" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="分布式" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CAP和BASE</title>
     <link href="http://yoursite.com/2019/08/26/CAP%E5%92%8CBASE/"/>
     <id>http://yoursite.com/2019/08/26/CAP和BASE/</id>
     <published>2019-08-26T08:52:51.000Z</published>
-    <updated>2019-08-26T08:53:00.039Z</updated>
+    <updated>2019-08-29T07:24:22.512Z</updated>
     
     <content type="html"><![CDATA[<h3 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h3><p>Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性）</p><p>CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项</p><ul><li>Consistency 一致性<ul><li>“all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，要求分布式系统数据发生改变后所有节点在后续的请求中都能感知到</li><li>强一致性，当数据发生改变，系统中的其他节点在下次请求都会感知到</li><li>弱一致性，保证某个时间级别（比如xx秒），数据能够达到数据一致的状态</li><li>最终一致性，弱一致性的一个特例，保证在一段时间内达到数据一致的状态</li></ul></li><li>Availability 可用性<ul><li>“Reads and Writes always succeed”，这里的succeed指的是请求和响应的过程成功，也每次请求都会在有限的时间内收到回复，换句话说就是服务器可用；并不是请求的返回值是成功的意思，返回值是失败也是有返回值的，同样说明请求响应的过程是成功的。</li><li>系统可用性5个9，意为分布式系统的可用水平为99.999%，全年停机时间不超过 <strong>(1-0.99999)<em>365</em>24*60 = 5.256 min</strong></li></ul></li><li>Partition tolerance 分区容错性<ul><li>“the system continues to operate despite arbitrary message loss or failure of part of the system” 分区指的是由于网络异常集群中只有部分节点能够正常通信，可能存在多个能够通信的子网络，这些子网络就是分区；又或者说集群中部分服务器宕机，其他服务器依然可用，这部分可用的服务器组成的子网络也可以称为分区。分区容错性是指当出现网络延迟或者故障的情况时系统依然能够提供服务</li></ul></li></ul><p>怎么理解呢？简单来说就是在分布式系统中发生故障时，CAP最多只能满足其中的两项，也就是CAP三选二呗，但是我们发现P（分区容错性）说白了就是指网络出问题后系统依然可用，这可是分布式系统的基础条件，应该必须满足；在满足分区容错性时有可能会存在两种问题</p><ul><li>1.用户访问部分服务器间的网络异常，这时只需将请求转发到可用的服务器即可，这时在理想情况下（服务器间的网络通畅）是可以满足CAP的，除非和所有服务器的网络都有问题（<strong>这只是理想情况</strong>）</li><li>2.除了用户访问服务器的网络异常之外，分布式系统中不同服务器直接的网络也可能存在异常，例如分布式系统中有A、B两台服务器，假设A、B之间存在网络故障，当服务器A改变数据之后无法同步到服务器B，此时就不能保证强一致性和可用性同时满足<ul><li>放弃强一致性（C），用户请求A可以得到最新的数据，用户请求B得到的是旧数据；可以保证用户每次请求都会返回结果，但不能保证数据的一致性</li><li>放弃可用性（A），为了保证数据的强一致性，数据每次修改后都需要等待所有的数据源都同步后才能进行读写，用户请求服务器A或者B，由于数据始终不能同步，最后会一直阻塞下去，不能保证用户的每次都能短时间内得到返回值甚至得不到返回值</li></ul></li></ul><p>综上，我认为的CAP理论是在分布式系统中服务器之间网络出现问题时，CAP最多只能满足其二，并不是分布式系统就只能满足CAP中的两项，理想情况下是都可满足的（虽然现在不大可能）；况且在分布式系统中P是必须满足的，也就是说CA只能满足其一，具体的取舍需要根据不同的业务场景权衡</p><h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h3><ul><li>Basically Available（基本可用）<ul><li>系统设计中可以牺牲部分可用性，比如允许响应时间增加1-2秒，服务降级等</li></ul></li><li>Soft state（软状态）<ul><li>允许系统中的数据存在中间状态，允许数据同步过程存在延迟</li></ul></li><li>Eventually consistent（最终一致性）<ul><li>所有数据再一段时间的数据同步后都能达到一致的状态 </li></ul></li></ul><p>综上，不同的业务以BASE理论为基础对可用性和一致性进行一个权衡；zk和数据库的主从都是舍弃高可用性；涉及到用户体验的场景则需要舍弃数据强一致性如12306买火车票，618和双11等对于用户的每个请求都需要给与响应，允许存在短时间数据不一致的状态</p><p><a href="http://www.hollischuang.com/archives/666" target="_blank" rel="noopener">参考资料</a></p>]]></content>
     
@@ -34,6 +59,10 @@
     
     </summary>
     
+      <category term="分布式" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="分布式" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
