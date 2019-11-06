@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/12/MyBatis%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2019-11-06T05:36:15.554Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/11/IDEA%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-11-01T06:31:23.738Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>http://yoursite.com/2019/07/12/IDEA%E9%85%8D%E7%BD%AEJunit%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2019-07-12T07:28:44.583Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/MyBatis%E5%85%A5%E9%97%A8/</loc>
-    
-    <lastmod>2019-07-12T06:21:23.205Z</lastmod>
     
   </url>
   
