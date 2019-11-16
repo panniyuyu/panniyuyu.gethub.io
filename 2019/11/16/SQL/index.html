@@ -119,18 +119,23 @@
 
 
 
-  <meta name="description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
-<meta name="keywords" content="分布式">
+  <meta name="description" content="子查询导致索引失效 连接查询（连接条件为索引）的效率更高 背景：微服务相关管理端的系统，用户会在自己对应服务的地方查询所需的server，新增需求为要查看自己的服务所在的app 数据结构：server在单独的一张表，可以根据服务名称（interface_name）来查询；AppName在另外的一张表中；两张表没有联系需要通过一个中间表来连接；interface_name有索引，三个表之间的链接字段">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAP和BASE">
-<meta property="og:url" content="http://yoursite.com/2019/08/26/CAP和BASE/index.html">
+<meta property="og:title" content="SQL级联查询一些总结">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/SQL/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
+<meta property="og:description" content="子查询导致索引失效 连接查询（连接条件为索引）的效率更高 背景：微服务相关管理端的系统，用户会在自己对应服务的地方查询所需的server，新增需求为要查看自己的服务所在的app 数据结构：server在单独的一张表，可以根据服务名称（interface_name）来查询；AppName在另外的一张表中；两张表没有联系需要通过一个中间表来连接；interface_name有索引，三个表之间的链接字段">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T07:24:22.512Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-19.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-18.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-17.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-16.png">
+<meta property="og:updated_time" content="2019-11-16T06:58:23.574Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAP和BASE">
-<meta name="twitter:description" content="CAP理论Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性） CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项  Consistency 一致性 “all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，">
+<meta name="twitter:title" content="SQL级联查询一些总结">
+<meta name="twitter:description" content="子查询导致索引失效 连接查询（连接条件为索引）的效率更高 背景：微服务相关管理端的系统，用户会在自己对应服务的地方查询所需的server，新增需求为要查看自己的服务所在的app 数据结构：server在单独的一张表，可以根据服务名称（interface_name）来查询；AppName在另外的一张表中；两张表没有联系需要通过一个中间表来连接；interface_name有索引，三个表之间的链接字段">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-19.png">
 
 
 
@@ -140,7 +145,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/26/CAP和BASE/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/SQL/">
 
 
 
@@ -150,7 +155,7 @@
   };
 </script>
 
-  <title>CAP和BASE | YyWang's Blog</title>
+  <title>SQL级联查询一些总结 | YyWang's Blog</title>
   
 
 
@@ -411,7 +416,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/CAP和BASE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/SQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YyWang">
@@ -428,7 +433,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAP和BASE
+          <h1 class="post-title" itemprop="name headline">SQL级联查询一些总结
 
               
             
@@ -454,46 +459,16 @@
                 
               
 
-              <time title="创建时间：2019-08-26 16:52:51" itemprop="dateCreated datePublished" datetime="2019-08-26T16:52:51+08:00">2019-08-26</time>
+              <time title="创建时间：2019-11-16 14:34:28 / 修改时间：14:58:23" itemprop="dateCreated datePublished" datetime="2019-11-16T14:34:28+08:00">2019-11-16</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-29 15:24:22" itemprop="dateModified" datetime="2019-08-29T15:24:22+08:00">2019-08-29</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -507,8 +482,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/26/CAP和BASE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/CAP和BASE/" itemprop="commentCount"></span>
+                <a href="/2019/11/16/SQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/16/SQL/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -543,52 +518,38 @@
       
 
       
-        <h3 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h3><p>Consistency（一致性） Availability（可用性） Partition tolerance（分区容错性）</p>
-<p>CAP理论的内容是在分布式系统中出现网络故障时最多只能满足CAP中的两项</p>
-<ul>
-<li>Consistency 一致性<ul>
-<li>“all node see the same data at the same time” 就是指分布式系统的数据一致性，可用看出这里的一致性指的是强一致性，要求分布式系统数据发生改变后所有节点在后续的请求中都能感知到</li>
-<li>强一致性，当数据发生改变，系统中的其他节点在下次请求都会感知到</li>
-<li>弱一致性，保证某个时间级别（比如xx秒），数据能够达到数据一致的状态</li>
-<li>最终一致性，弱一致性的一个特例，保证在一段时间内达到数据一致的状态</li>
-</ul>
-</li>
-<li>Availability 可用性<ul>
-<li>“Reads and Writes always succeed”，这里的succeed指的是请求和响应的过程成功，也每次请求都会在有限的时间内收到回复，换句话说就是服务器可用；并不是请求的返回值是成功的意思，返回值是失败也是有返回值的，同样说明请求响应的过程是成功的。</li>
-<li>系统可用性5个9，意为分布式系统的可用水平为99.999%，全年停机时间不超过 <strong>(1-0.99999)<em>365</em>24*60 = 5.256 min</strong></li>
-</ul>
-</li>
-<li>Partition tolerance 分区容错性<ul>
-<li>“the system continues to operate despite arbitrary message loss or failure of part of the system” 分区指的是由于网络异常集群中只有部分节点能够正常通信，可能存在多个能够通信的子网络，这些子网络就是分区；又或者说集群中部分服务器宕机，其他服务器依然可用，这部分可用的服务器组成的子网络也可以称为分区。分区容错性是指当出现网络延迟或者故障的情况时系统依然能够提供服务</li>
-</ul>
-</li>
-</ul>
-<p>怎么理解呢？简单来说就是在分布式系统中发生故障时，CAP最多只能满足其中的两项，也就是CAP三选二呗，但是我们发现P（分区容错性）说白了就是指网络出问题后系统依然可用，这可是分布式系统的基础条件，应该必须满足；在满足分区容错性时有可能会存在两种问题</p>
-<ul>
-<li>1.用户访问部分服务器间的网络异常，这时只需将请求转发到可用的服务器即可，这时在理想情况下（服务器间的网络通畅）是可以满足CAP的，除非和所有服务器的网络都有问题（<strong>这只是理想情况</strong>）</li>
-<li>2.除了用户访问服务器的网络异常之外，分布式系统中不同服务器直接的网络也可能存在异常，例如分布式系统中有A、B两台服务器，假设A、B之间存在网络故障，当服务器A改变数据之后无法同步到服务器B，此时就不能保证强一致性和可用性同时满足<ul>
-<li>放弃强一致性（C），用户请求A可以得到最新的数据，用户请求B得到的是旧数据；可以保证用户每次请求都会返回结果，但不能保证数据的一致性</li>
-<li>放弃可用性（A），为了保证数据的强一致性，数据每次修改后都需要等待所有的数据源都同步后才能进行读写，用户请求服务器A或者B，由于数据始终不能同步，最后会一直阻塞下去，不能保证用户的每次都能短时间内得到返回值甚至得不到返回值</li>
-</ul>
-</li>
-</ul>
-<p>综上，我认为的CAP理论是在分布式系统中服务器之间网络出现问题时，CAP最多只能满足其二，并不是分布式系统就只能满足CAP中的两项，理想情况下是都可满足的（虽然现在不大可能）；况且在分布式系统中P是必须满足的，也就是说CA只能满足其一，具体的取舍需要根据不同的业务场景权衡</p>
-<h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h3><ul>
-<li>Basically Available（基本可用）<ul>
-<li>系统设计中可以牺牲部分可用性，比如允许响应时间增加1-2秒，服务降级等</li>
-</ul>
-</li>
-<li>Soft state（软状态）<ul>
-<li>允许系统中的数据存在中间状态，允许数据同步过程存在延迟</li>
-</ul>
-</li>
-<li>Eventually consistent（最终一致性）<ul>
-<li>所有数据再一段时间的数据同步后都能达到一致的状态 </li>
-</ul>
-</li>
-</ul>
-<p>综上，不同的业务以BASE理论为基础对可用性和一致性进行一个权衡；zk和数据库的主从都是舍弃高可用性；涉及到用户体验的场景则需要舍弃数据强一致性如12306买火车票，618和双11等对于用户的每个请求都需要给与响应，允许存在短时间数据不一致的状态</p>
-<p><a href="http://www.hollischuang.com/archives/666" target="_blank" rel="noopener">参考资料</a></p>
+        <p>子查询导致索引失效</p>
+<p>连接查询（连接条件为索引）的效率更高</p>
+<h5 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h5><p>微服务相关管理端的系统，用户会在自己对应服务的地方查询所需的server，新增需求为要查看自己的服务所在的app</p>
+<h5 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h5><p>server在单独的一张表，可以根据服务名称（interface_name）来查询；AppName在另外的一张表中；两张表没有联系需要通过一个中间表来连接；interface_name有索引，三个表之间的链接字段都有索引</p>
+<h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h5><p>需要联合3张表来查询所需要的数据，每张表的数据量都比较大，而且这个SQL是系统使用最频繁的部分查询的频率还特别高，所以要尽可能快的出结果</p>
+<h5 id="我的心路历程："><a href="#我的心路历程：" class="headerlink" title="我的心路历程："></a>我的心路历程：</h5><p>先通过interface_name条件筛选出一部分数据再链接另外两张表查询，都有索引一定是最优的，SQL如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	app_name </span><br><span class="line">FROM</span><br><span class="line">	saf_app </span><br><span class="line">WHERE</span><br><span class="line">	app_id IN </span><br><span class="line">	( </span><br><span class="line">		SELECT DISTINCT app_id FROM saf_ins_hb WHERE ins_key IN </span><br><span class="line">		(SELECT ins_key FROM saf_server WHERE interface_name = &apos;xxx&apos;) </span><br><span class="line">	)</span><br><span class="line"> ORDER BY app._name</span><br></pre></td></tr></table></figure>
+<p>查询时间竟然需要6s多，这绝对是不能忍的，接着我又试了一下级联查询，SQL如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT app.app_name </span><br><span class="line">	FROM saf_server s </span><br><span class="line">LEFT JOIN saf_ins_hb hb ON s.ins_key = hb.ins_key</span><br><span class="line">LEFT JOIN saf_app app ON hb.app_id = app.app_id</span><br><span class="line">	WHERE s.interface_name = &apos;xxx&apos; </span><br><span class="line">	ORDER BY app.app_name</span><br></pre></td></tr></table></figure>
+<p>这次的结果只需0.05s,相差100倍还多</p>
+<p>explain看下呢</p>
+<p>IN子查询如下</p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<p>可以看到id为2和3的查询都用到了索引并且只需扫描的很少的行数，到了最外层的查询就变成了全表扫描了，索引就失效了</p>
+<p>级联查询如下</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"></p>
+<p>级联查询全部使用到了索引，而且扫描的行数比子查询的要少很多，扫描的最终行数是乘积的关系，级联查询有两个子查询的rows为1所以要比IN子查询要小很多</p>
+<p>所以说IN子查询会导致部分索引失效，我有了新的想法，既然连接查询会很快那么我先通过条件筛选出数据再做级联查询不是更快了，开整~ SQL如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT app.app_name </span><br><span class="line">    FROM (SELECT ins_key FROM saf_server WHERE interface_name = &apos;xxx&apos;) s </span><br><span class="line">LEFT JOIN saf_ins_hb hb ON s.ins_key = hb.ins_key</span><br><span class="line">LEFT JOIN saf_app app ON hb.app_id = app.app_id</span><br><span class="line">    ORDER BY app.app_name</span><br></pre></td></tr></table></figure>
+<p>查询0.02s左右，我非常满意，explain一下呢</p>
+<p><img src="/images/pasted-17.png" alt="upload successful"></p>
+<p>相较于级联查询还多了7000多次的遍历？？？子查询害人啊，查询结果0.02s左右应该是有缓存</p>
+<p>看了一篇文章说在on后面加限制条件会比where中加限制条件用时要少，on后面加条件在两张表做连接的同时过滤掉一些数据后再和第三张表做连接，where是将连接了所有表之后的结果进行筛选，听着很有道理，那我试一下呢，SQL如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT app.app_name </span><br><span class="line">    FROM saf_server s </span><br><span class="line">LEFT JOIN saf_ins_hb hb ON s.ins_key = hb.ins_key and s.interface_name = &apos;xxx&apos;</span><br><span class="line">LEFT JOIN saf_app app ON hb.app_id = app.app_id</span><br><span class="line">    ORDER BY app.app_name</span><br></pre></td></tr></table></figure>
+<p>explain看下</p>
+<p><img src="/images/pasted-16.png" alt="upload successful"></p>
+<p>结果非常意外，不仅时间没有省下来，索引也没有使用，进行全表扫描，还好我验证了一下，原因的话还不知道，对mysql底层不是很熟悉，先暂时把遇到的问题记录下来吧 ^_^</p>
+<p><strong>结论：子查询会导致索引失效，尽量不使用子查询，用级联查询代替，并将级联查询的条件设置建立索引</strong></p>
+<h5 id="级联查询的原理"><a href="#级联查询的原理" class="headerlink" title="级联查询的原理"></a>级联查询的原理</h5><p>mysql会首先找到一张表作为驱动表，就是首先要进行查询的表，以驱动表为基础匹配剩下的表，inner join的情况mysql会选择数据量小的表作为驱动表，left/right join分别以左/右表作为驱动表；接着会根据on的条件过滤结果，最终将连接的表都筛选完成后如果有where语句指定条件将进行最后的筛选得到结果</p>
+<p>连接的算法也很简单，连接条件没有索引则进行全表扫描然后进行匹配，如果还有表连接则将匹配的结果继续与剩余的表进行扫描匹配，这种方法简单粗暴，叫做嵌套循环连接（Nested-Loop Join）；Mysql对这种方式有了优化，增加了join buffer，是将驱动表关联条件的相关列缓存起来，并将多次匹配合并，减少的匹配的次数，以此方式来加速查询结果，叫做BLJ算法（Block Nested-Loop Join）；有索引则会先匹配索引，匹配后的结果再插到对应的数据返回</p>
+<p>综上，级联查询的查询条件最好是加索引，虽然mysql对没有索引的链接做了优化，那也是没有索引的方式快的，而且最好链接的条件是主键索引，这是由于非主键索引指向的时主键索引，要得到数据还要跑一次主键索引；还有我想到了阿里巴巴java开发规范中写道多余三张表不能使用join，用多次简单查询代替这个也要注意一下</p>
+<p>参考： <a href="https://www.jianshu.com/p/048d93d3ee54" target="_blank" rel="noopener">MySQL查询优化——连接以及连接原理</a></p>
 
       
     </div>
@@ -656,7 +617,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/08/26/CAP和BASE/" title="CAP和BASE">http://yoursite.com/2019/08/26/CAP和BASE/</a>
+    <a href="http://yoursite.com/2019/11/16/SQL/" title="SQL级联查询一些总结">http://yoursite.com/2019/11/16/SQL/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -669,7 +630,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
           
         </div>
       
@@ -737,8 +698,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/21/缓存更新的套路-总结与感受/" rel="next" title="缓存更新的套路 总结与感受">
-                <i class="fa fa-chevron-left"></i> 缓存更新的套路 总结与感受
+              <a href="/2019/11/06/踩坑记录/" rel="next" title="踩坑记录">
+                <i class="fa fa-chevron-left"></i> 踩坑记录
               </a>
             
           </div>
@@ -747,8 +708,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/29/Zookeeper扫盲/" rel="prev" title="Zookeeper扫盲">
-                Zookeeper扫盲 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/16/SQL-Explain记录/" rel="prev" title="SQL Explain记录(转载)">
+                SQL Explain记录(转载) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1172,7 +1133,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP理论"><span class="nav-number">1.</span> <span class="nav-text">CAP理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BASE理论"><span class="nav-number">2.</span> <span class="nav-text">BASE理论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景："><span class="nav-number">1.</span> <span class="nav-text">背景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据结构："><span class="nav-number">2.</span> <span class="nav-text">数据结构：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析："><span class="nav-number">3.</span> <span class="nav-text">分析：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我的心路历程："><span class="nav-number">4.</span> <span class="nav-text">我的心路历程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#级联查询的原理"><span class="nav-number">5.</span> <span class="nav-text">级联查询的原理</span></a></li></ol></div>
             
 
           </div>
