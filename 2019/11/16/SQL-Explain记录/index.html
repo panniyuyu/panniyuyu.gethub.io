@@ -122,15 +122,15 @@
   <meta name="description" content="要优化SQL必须得使用Explain，这里记录一下Explain的使用，直接查看即可，摘自MySQL Explain详解 explain 直接加载SQL语句之前，然后一起执行即可，只能分析查询语句，会出现以下结果 IDselect的查询顺序标识，SQL顺序由大到小执行，id相同从上往下顺序执行 select_typeselect的类型  SIMPLE(简单SELECT，不使用UNION或子查询等)">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL Explain记录(转载)">
+<meta property="og:title" content="SQL Explain记录">
 <meta property="og:url" content="http://yoursite.com/2019/11/16/SQL-Explain记录/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
 <meta property="og:description" content="要优化SQL必须得使用Explain，这里记录一下Explain的使用，直接查看即可，摘自MySQL Explain详解 explain 直接加载SQL语句之前，然后一起执行即可，只能分析查询语句，会出现以下结果 IDselect的查询顺序标识，SQL顺序由大到小执行，id相同从上往下顺序执行 select_typeselect的类型  SIMPLE(简单SELECT，不使用UNION或子查询等)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/pasted-20.png">
-<meta property="og:updated_time" content="2019-11-16T06:57:46.499Z">
+<meta property="og:updated_time" content="2019-11-20T02:17:19.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL Explain记录(转载)">
+<meta name="twitter:title" content="SQL Explain记录">
 <meta name="twitter:description" content="要优化SQL必须得使用Explain，这里记录一下Explain的使用，直接查看即可，摘自MySQL Explain详解 explain 直接加载SQL语句之前，然后一起执行即可，只能分析查询语句，会出现以下结果 IDselect的查询顺序标识，SQL顺序由大到小执行，id相同从上往下顺序执行 select_typeselect的类型  SIMPLE(简单SELECT，不使用UNION或子查询等)">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-20.png">
 
@@ -152,7 +152,7 @@
   };
 </script>
 
-  <title>SQL Explain记录(转载) | YyWang's Blog</title>
+  <title>SQL Explain记录 | YyWang's Blog</title>
   
 
 
@@ -430,7 +430,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SQL Explain记录(转载)
+          <h1 class="post-title" itemprop="name headline">SQL Explain记录
 
               
             
@@ -456,12 +456,24 @@
                 
               
 
-              <time title="创建时间：2019-11-16 14:43:30 / 修改时间：14:57:46" itemprop="dateCreated datePublished" datetime="2019-11-16T14:43:30+08:00">2019-11-16</time>
+              <time title="创建时间：2019-11-16 14:43:30" itemprop="dateCreated datePublished" datetime="2019-11-16T14:43:30+08:00">2019-11-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-20 10:17:19" itemprop="dateModified" datetime="2019-11-20T10:17:19+08:00">2019-11-20</time>
               
             
           </span>
@@ -583,13 +595,16 @@
 <li><p>No tables used：Query语句中使用from dual 或不含任何from子句</p>
 </li>
 </ul>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
 <li>EXPLAIN不会告诉你关于触发器、存储过程的信息或用户自定义函数对查询的影响情况</li>
 <li>EXPLAIN不考虑各种Cache</li>
 <li>EXPLAIN不能显示MySQL在执行查询时所作的优化工作</li>
 <li>部分统计信息是估算的，并非精确值</li>
 <li>EXPALIN只能解释SELECT操作，其他操作要重写为SELECT后查看执行计划。</li>
 </ul>
+<h3 id="重点关注："><a href="#重点关注：" class="headerlink" title="重点关注："></a>重点关注：</h3><p><strong>type至少达到range级别</strong></p>
+<p><strong>key列有值，并且key_len越少越好，做到有索引的查询</strong></p>
+<p><strong>rows列越少越好</strong></p>
 
       
     </div>
@@ -657,7 +672,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/11/16/SQL-Explain记录/" title="SQL Explain记录(转载)">http://yoursite.com/2019/11/16/SQL-Explain记录/</a>
+    <a href="http://yoursite.com/2019/11/16/SQL-Explain记录/" title="SQL Explain记录">http://yoursite.com/2019/11/16/SQL-Explain记录/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -748,6 +763,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/11/22/回调与监听器模式/" rel="prev" title="回调与监听器模式">
+                回调与监听器模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -821,7 +840,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1169,7 +1188,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID"><span class="nav-number">1.</span> <span class="nav-text">ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-type"><span class="nav-number">2.</span> <span class="nav-text">select_type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table"><span class="nav-number">3.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">4.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possible-keys"><span class="nav-number">5.</span> <span class="nav-text">possible_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key"><span class="nav-number">6.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key-len"><span class="nav-number">7.</span> <span class="nav-text">key_len</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">8.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rows"><span class="nav-number">9.</span> <span class="nav-text">rows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra"><span class="nav-number">10.</span> <span class="nav-text">Extra</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number"></span> <span class="nav-text">总结：</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID"><span class="nav-number">1.</span> <span class="nav-text">ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-type"><span class="nav-number">2.</span> <span class="nav-text">select_type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table"><span class="nav-number">3.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">4.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possible-keys"><span class="nav-number">5.</span> <span class="nav-text">possible_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key"><span class="nav-number">6.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key-len"><span class="nav-number">7.</span> <span class="nav-text">key_len</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">8.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rows"><span class="nav-number">9.</span> <span class="nav-text">rows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra"><span class="nav-number">10.</span> <span class="nav-text">Extra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">11.</span> <span class="nav-text">总结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重点关注："><span class="nav-number">12.</span> <span class="nav-text">重点关注：</span></a></li></ol></div>
             
 
           </div>
@@ -1186,7 +1205,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
         </div>
       </div>
