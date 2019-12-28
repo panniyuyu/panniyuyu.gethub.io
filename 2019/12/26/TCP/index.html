@@ -129,7 +129,10 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-24.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-25.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-26.png">
-<meta property="og:updated_time" content="2019-12-26T13:06:16.256Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-27.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-28.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-29.png">
+<meta property="og:updated_time" content="2019-12-28T10:03:05.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP">
 <meta name="twitter:description" content="TCP报文  源端口 16bit 目的端口 16bit 序号 32bit seq 发送SYN时（SYN控制位是1）会初始化序列码（Initial Sequence Number, ISN），会用一个算法生产随机数 确认序号 32bit ack 伴随ACK（ACK控制位是1）报文一起，表示下一个要接收包的序列开始 4位首部长度 4bit  保留 6bit 标志 6bit URG 紧急标志 ACK 应">
@@ -457,12 +460,24 @@
                 
               
 
-              <time title="创建时间：2019-12-26 21:05:23 / 修改时间：21:06:16" itemprop="dateCreated datePublished" datetime="2019-12-26T21:05:23+08:00">2019-12-26</time>
+              <time title="创建时间：2019-12-26 21:05:23" itemprop="dateCreated datePublished" datetime="2019-12-26T21:05:23+08:00">2019-12-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-28 18:03:05" itemprop="dateModified" datetime="2019-12-28T18:03:05+08:00">2019-12-28</time>
               
             
           </span>
@@ -640,6 +655,21 @@
 </li>
 <li>假设全连接队列满，会根据tcp_abort_on_overflow的值，执行相应的策略（值为0，服务器丢弃该连接，连接信息仍然保留在半连接队列中，服务器会重发SYN+ACK，直到队列不满，建立连接；值为1，服务器发送rst报文关闭连接）</li>
 </ul>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>控制网络流量，寻找一个合适的数据传输速度，防止造成网络堵塞或者传输速度过慢效率低的问题；拥塞窗口（cwnd）也就是发送数据的最大值，防止拥塞窗口过大，需要设置一个阈值（ssthresh）来控制窗口的大小，在阈值上下使用不同的算法</p>
+<ul>
+<li>慢开始（cwnd &lt; ssthresh）；开始不会就发送大量的数据，由小到大慢慢增加拥塞窗口的大小，探测网络的拥塞程度，每收到一个ACK拥塞窗口（cwnd）增加一倍，从1开始（2的指数增加）</li>
+</ul>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<ul>
+<li>拥塞避免（cwnd &gt; ssthresh）；让窗口慢慢增大，经过一个往返时间RTT（收到一个ACK），窗口大小加1</li>
+<li>在慢启动和拥塞避免的阶段中当出现网络拥塞（有报文超时），窗口会重置为1，ssthresh的阈值会重置为发生拥塞时窗口的一半，再重新开始传输数据</li>
+<li>快重传；发送方按顺序传递报文，当出现丢失数据，接收方会发送重复的确认告知发送方报文丢失，发送方收到三个重复的确认立即重发报文，不必等待报文超时再重传</li>
+</ul>
+<p><img src="/images/pasted-28.png" alt="upload successful"></p>
+<ul>
+<li>快恢复；发送方收到3个重发确认，将ssthresh减半，不执行慢开始（因为收到重复确认所以此时网络并没有拥塞，执行拥塞避免窗口加1，缓慢增大即可）</li>
+</ul>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://www.zhihu.com/question/24853633" target="_blank" rel="noopener">TCP为什么是三次握手，而不是两次或四次</a></p>
 <p><a href="https://www.zhihu.com/question/276693714/answer/415714916" target="_blank" rel="noopener">TCP建立连接时三次握手的一个疑问点</a></p>
 <p><a href="https://blog.csdn.net/a_tu_/article/details/80389878" target="_blank" rel="noopener">TCP中的RST标志(Reset)详解</a></p>
@@ -1217,7 +1247,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP报文"><span class="nav-number">1.</span> <span class="nav-text">TCP报文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手"><span class="nav-number">2.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">3.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SYN攻击"><span class="nav-number">5.</span> <span class="nav-text">SYN攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RST攻击"><span class="nav-number">6.</span> <span class="nav-text">RST攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#长连接短连接"><span class="nav-number">7.</span> <span class="nav-text">长连接短连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半连接队列和全连接队列"><span class="nav-number">8.</span> <span class="nav-text">半连接队列和全连接队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP报文"><span class="nav-number">1.</span> <span class="nav-text">TCP报文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手"><span class="nav-number">2.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">3.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SYN攻击"><span class="nav-number">5.</span> <span class="nav-text">SYN攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RST攻击"><span class="nav-number">6.</span> <span class="nav-text">RST攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#长连接短连接"><span class="nav-number">7.</span> <span class="nav-text">长连接短连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半连接队列和全连接队列"><span class="nav-number">8.</span> <span class="nav-text">半连接队列和全连接队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拥塞控制"><span class="nav-number">9.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
