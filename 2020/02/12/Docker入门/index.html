@@ -120,6 +120,7 @@
 
 
   <meta name="description" content="开门见山，docker是一种新的虚拟化技术，体积小，启动快，减小了开发和运维成本；下面就简单扫个盲入个门 虚拟技术 传统的虚拟机技术   它的层次结构为： 个人pc（硬件） -&amp;gt; 操作系统（Host OS） -&amp;gt; 虚拟机管理系统（Hypervisor）-&amp;gt; 虚拟机（VM） 虚拟机中的层次为：操作系统（windos/macos…） -&amp;gt; 依赖库（C++…） -&amp;gt; 应用（">
+<meta name="keywords" content="容器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker入门">
 <meta property="og:url" content="http://yoursite.com/2020/02/12/Docker入门/index.html">
@@ -128,7 +129,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/pasted-30.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-32.png">
-<meta property="og:updated_time" content="2020-02-12T10:33:51.229Z">
+<meta property="og:updated_time" content="2020-02-12T10:37:02.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker入门">
 <meta name="twitter:description" content="开门见山，docker是一种新的虚拟化技术，体积小，启动快，减小了开发和运维成本；下面就简单扫个盲入个门 虚拟技术 传统的虚拟机技术   它的层次结构为： 个人pc（硬件） -&amp;gt; 操作系统（Host OS） -&amp;gt; 虚拟机管理系统（Hypervisor）-&amp;gt; 虚拟机（VM） 虚拟机中的层次为：操作系统（windos/macos…） -&amp;gt; 依赖库（C++…） -&amp;gt; 应用（">
@@ -456,7 +457,7 @@
                 
               
 
-              <time title="创建时间：2020-02-12 17:33:34 / 修改时间：18:33:51" itemprop="dateCreated datePublished" datetime="2020-02-12T17:33:34+08:00">2020-02-12</time>
+              <time title="创建时间：2020-02-12 17:33:34 / 修改时间：18:37:02" itemprop="dateCreated datePublished" datetime="2020-02-12T17:33:34+08:00">2020-02-12</time>
             
 
             
@@ -466,6 +467,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -563,6 +582,7 @@
 <h5 id="将镜像保存为tar包"><a href="#将镜像保存为tar包" class="headerlink" title="将镜像保存为tar包"></a>将镜像保存为tar包</h5><figure class="highlight docker"><figcaption><span>save -o $&#123;tar name&#125;.tar $&#123;path&#125; ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##### 恢复镜像</span></span><br><span class="line"></span><br><span class="line">``` docker load -i $&#123;tar name&#125;.tar</span><br></pre></td></tr></table></figure>
 <h5 id="停止全部容器"><a href="#停止全部容器" class="headerlink" title="停止全部容器"></a>停止全部容器</h5><figure class="highlight docker"><figcaption><span>stop $(docker ps -q) ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##### 删除全部容器</span></span><br><span class="line"></span><br><span class="line">``` docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
 <h5 id="停止并删除全部容器"><a href="#停止并删除全部容器" class="headerlink" title="停止并删除全部容器"></a>停止并删除全部容器</h5><figure class="highlight docker"><figcaption><span>stop $(docker ps -q) & docker rm $(docker ps -aq) ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### dockerfile 创建镜像</span></span><br><span class="line"></span><br><span class="line">简单来说记录一系列命令和参数，然后docker根据dockerfile中的命令来构建镜像</span><br><span class="line"></span><br><span class="line"><span class="comment">##### From </span></span><br><span class="line"></span><br><span class="line">从哪个基础镜像进行构建</span><br><span class="line"></span><br><span class="line"><span class="comment">##### MAINTAINER </span></span><br><span class="line"></span><br><span class="line">镜像创建者</span><br><span class="line"></span><br><span class="line"><span class="comment">##### ENV key value </span></span><br><span class="line"></span><br><span class="line">设置环境变量</span><br><span class="line"></span><br><span class="line"><span class="comment">##### RUN command </span></span><br><span class="line"></span><br><span class="line">运行<span class="keyword">shell</span>指令（多个RUN会有多层嵌套，不期望使用多个RUN，多个指令以 \ 结尾 &amp;&amp; 开头）</span><br><span class="line"></span><br><span class="line"><span class="comment">##### ADD source_file dest_file </span></span><br><span class="line"></span><br><span class="line">将宿主文件复制到容器内，压缩文件自动解压</span><br><span class="line"></span><br><span class="line"><span class="comment">##### COPY source_file dest_file </span></span><br><span class="line"></span><br><span class="line">将宿主文件复制到容器内，压缩文件不自动解压</span><br><span class="line"></span><br><span class="line"><span class="comment">##### WORKDIR path </span></span><br><span class="line"></span><br><span class="line">设置工作目录，相当于 cd</span><br><span class="line"></span><br><span class="line"><span class="comment">##### 构建镜像命令</span></span><br><span class="line"></span><br><span class="line">``` docker build -t $&#123;image name&#125;:$&#123;tag&#125; .</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -639,6 +659,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/容器/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
+          
+        </div>
       
 
       
@@ -812,7 +838,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -857,7 +885,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1152,7 +1182,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
         </div>
       </div>
