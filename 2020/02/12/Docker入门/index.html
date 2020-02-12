@@ -128,7 +128,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/pasted-30.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-32.png">
-<meta property="og:updated_time" content="2020-02-12T10:31:21.574Z">
+<meta property="og:updated_time" content="2020-02-12T10:33:51.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker入门">
 <meta name="twitter:description" content="开门见山，docker是一种新的虚拟化技术，体积小，启动快，减小了开发和运维成本；下面就简单扫个盲入个门 虚拟技术 传统的虚拟机技术   它的层次结构为： 个人pc（硬件） -&amp;gt; 操作系统（Host OS） -&amp;gt; 虚拟机管理系统（Hypervisor）-&amp;gt; 虚拟机（VM） 虚拟机中的层次为：操作系统（windos/macos…） -&amp;gt; 依赖库（C++…） -&amp;gt; 应用（">
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="创建时间：2020-02-12 17:33:34 / 修改时间：18:31:21" itemprop="dateCreated datePublished" datetime="2020-02-12T17:33:34+08:00">2020-02-12</time>
+              <time title="创建时间：2020-02-12 17:33:34 / 修改时间：18:33:51" itemprop="dateCreated datePublished" datetime="2020-02-12T17:33:34+08:00">2020-02-12</time>
             
 
             
@@ -538,7 +538,7 @@
 <li>容器 独立运行的一个或一组应用 镜像相当于类，容器相当于类的实例</li>
 <li>仓库 用于保存镜像，有公有私有两种，类似于git仓库</li>
 </ul>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><h5 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h5><figure class="highlight docker"><figcaption><span>-v ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##### 修改镜像源</span></span><br><span class="line"></span><br><span class="line">``` vim /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><h5 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h5><figure class="highlight docker"><figcaption><span>-v ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##### 修改镜像源</span></span><br><span class="line"></span><br><span class="line">``` vim /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <h5 id="启动-停止-重启-查看状态"><a href="#启动-停止-重启-查看状态" class="headerlink" title="启动/停止/重启/查看状态"></a>启动/停止/重启/查看状态</h5><figure class="highlight plain"><figcaption><span>start/stop/restart/status docker ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 查看镜像</span><br><span class="line"></span><br><span class="line">``` docker images</span><br></pre></td></tr></table></figure>
 <h5 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h5><figure class="highlight docker"><figcaption><span>search $&#123;image name&#125; ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##### 拉取镜像 不指定版本号拉去最新的</span></span><br><span class="line"></span><br><span class="line">``` docker search pull $&#123;image name&#125;:$&#123;version&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="删除镜像-f-强制删除"><a href="#删除镜像-f-强制删除" class="headerlink" title="删除镜像 -f 强制删除"></a>删除镜像 -f 强制删除</h5><figure class="highlight docker"><figcaption><span>rmi -f $&#123;image name/id&#125; ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##### 查看正在运行的容器 -a(查看所有)</span></span><br><span class="line"></span><br><span class="line">``` docker ps -a</span><br></pre></td></tr></table></figure>
