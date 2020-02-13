@@ -119,19 +119,18 @@
 
 
 
-  <meta name="description" content="外接键盘的调整键盘设置中将control和command互换就可以达到和Windows下的复制粘贴时一样的，切换程序则由alt+tab变成了ctrl+tab需要适应一下，不过复制，粘贴，撤销，保存这些不用再去适应新的快捷键了 idea中的调整preferences中找到keymap选择Eclipse(macOS)，这样加上第一步的配置复制粘贴这些快捷键与Windows相同，不用再去适应新的快捷键">
+  <meta name="description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac 设置">
-<meta property="og:url" content="http://yoursite.com/2019/08/13/mac-设置/index.html">
+<meta property="og:title" content="将Hexo博客迁移到docker中（总）">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
-<meta property="og:description" content="外接键盘的调整键盘设置中将control和command互换就可以达到和Windows下的复制粘贴时一样的，切换程序则由alt+tab变成了ctrl+tab需要适应一下，不过复制，粘贴，撤销，保存这些不用再去适应新的快捷键了 idea中的调整preferences中找到keymap选择Eclipse(macOS)，这样加上第一步的配置复制粘贴这些快捷键与Windows相同，不用再去适应新的快捷键">
+<meta property="og:description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/pasted-14.png">
-<meta property="og:updated_time" content="2019-08-13T09:14:55.008Z">
+<meta property="og:updated_time" content="2020-02-13T02:25:05.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac 设置">
-<meta name="twitter:description" content="外接键盘的调整键盘设置中将control和command互换就可以达到和Windows下的复制粘贴时一样的，切换程序则由alt+tab变成了ctrl+tab需要适应一下，不过复制，粘贴，撤销，保存这些不用再去适应新的快捷键了 idea中的调整preferences中找到keymap选择Eclipse(macOS)，这样加上第一步的配置复制粘贴这些快捷键与Windows相同，不用再去适应新的快捷键">
-<meta name="twitter:image" content="http://yoursite.com/images/pasted-14.png">
+<meta name="twitter:title" content="将Hexo博客迁移到docker中（总）">
+<meta name="twitter:description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
 
 
 
@@ -141,7 +140,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/13/mac-设置/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/">
 
 
 
@@ -151,7 +150,7 @@
   };
 </script>
 
-  <title>mac 设置 | YyWang's Blog</title>
+  <title>将Hexo博客迁移到docker中（总） | YyWang's Blog</title>
   
 
 
@@ -412,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/mac-设置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YyWang">
@@ -429,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mac 设置
+          <h1 class="post-title" itemprop="name headline">将Hexo博客迁移到docker中（总）
 
               
             
@@ -455,7 +454,7 @@
                 
               
 
-              <time title="创建时间：2019-08-13 16:44:33 / 修改时间：17:14:55" itemprop="dateCreated datePublished" datetime="2019-08-13T16:44:33+08:00">2019-08-13</time>
+              <time title="创建时间：2020-02-13 10:20:45 / 修改时间：10:25:05" itemprop="dateCreated datePublished" datetime="2020-02-13T10:20:45+08:00">2020-02-13</time>
             
 
             
@@ -465,6 +464,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -478,8 +495,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/13/mac-设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/13/mac-设置/" itemprop="commentCount"></span>
+                <a href="/2020/02/13/将Hexo博客迁移到docker（总）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/13/将Hexo博客迁移到docker（总）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -514,10 +531,23 @@
       
 
       
-        <h6 id="外接键盘的调整"><a href="#外接键盘的调整" class="headerlink" title="外接键盘的调整"></a>外接键盘的调整</h6><p>键盘设置中将control和command互换就可以达到和Windows下的复制粘贴时一样的，切换程序则由alt+tab变成了ctrl+tab需要适应一下，不过复制，粘贴，撤销，保存这些不用再去适应新的快捷键了<br><img src="/images/pasted-14.png" alt="upload successful"></p>
-<h6 id="idea中的调整"><a href="#idea中的调整" class="headerlink" title="idea中的调整"></a>idea中的调整</h6><p>preferences中找到keymap选择Eclipse(macOS)，这样加上第一步的配置复制粘贴这些快捷键与Windows相同，不用再去适应新的快捷键</p>
-<h6 id="自动补全变量"><a href="#自动补全变量" class="headerlink" title="自动补全变量"></a>自动补全变量</h6><p>keymap中搜索variable   默认为：option+command+L 通过以上设置后为：Ctrl+alt+L</p>
-<h5 id="另一种使用方法"><a href="#另一种使用方法" class="headerlink" title="另一种使用方法"></a>另一种使用方法</h5><p>不做任何配置，idea中使用eclipse风格的快捷键，idea中的使用不影响，但是在idea以外就得适应mac中的快捷键，感觉还是这个方法更容易接受一些</p>
+        <p>博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。</p>
+<p>难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东西也需要保留</p>
+<p>这个就麻烦了，相当于重新搭建Hexo的博客了，没办法谁让我之前没有记录总要还的嘛</p>
+<p>迁移步骤分为两个阶段：</p>
+<h4 id="第一阶段-重新搭建Hexo博客系统"><a href="#第一阶段-重新搭建Hexo博客系统" class="headerlink" title="第一阶段 重新搭建Hexo博客系统"></a>第一阶段 重新搭建Hexo博客系统</h4><ul>
+<li>入门docker</li>
+<li>在docker容器中重新搭建Hexo博客系统并记录步骤（启动容器进行端口映射 8088:80，在公网验证）</li>
+<li>根据记录的步骤编写Dockerfile，生成镜像（启动容器进行端口映射 8088:80 在公网验证）</li>
+</ul>
+<h4 id="第二阶段-迁移博客"><a href="#第二阶段-迁移博客" class="headerlink" title="第二阶段 迁移博客"></a>第二阶段 迁移博客</h4><ul>
+<li>总结需要的文件</li>
+<li>拷贝文件到容器中</li>
+<li>修改Dockerfile</li>
+<li>在公网验证</li>
+<li>验证成功后，将宿主NGINX端口映射到docker容器中</li>
+</ul>
+<p>最终将容器打包成tar做备份，或者将镜像提交到仓库中直接拉取即可，非常完美</p>
 
       
     </div>
@@ -585,7 +615,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2019/08/13/mac-设置/" title="mac 设置">http://yoursite.com/2019/08/13/mac-设置/</a>
+    <a href="http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/" title="将Hexo博客迁移到docker中（总）">http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -595,6 +625,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          
+        </div>
       
 
       
@@ -660,8 +696,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/05/Lambda表达式/" rel="next" title="Lambda表达式">
-                <i class="fa fa-chevron-left"></i> Lambda表达式
+              <a href="/2020/02/12/Docker入门/" rel="next" title="Docker入门">
+                <i class="fa fa-chevron-left"></i> Docker入门
               </a>
             
           </div>
@@ -670,8 +706,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/15/Optional/" rel="prev" title="Optional 使用及源码">
-                Optional 使用及源码 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/13/将Hexo博客迁移到docker（一）/" rel="prev" title="将Hexo博客迁移到docker（一）">
+                将Hexo博客迁移到docker（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1103,7 +1139,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#外接键盘的调整"><span class="nav-number">1.</span> <span class="nav-text">外接键盘的调整</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#idea中的调整"><span class="nav-number">2.</span> <span class="nav-text">idea中的调整</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自动补全变量"><span class="nav-number">3.</span> <span class="nav-text">自动补全变量</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#另一种使用方法"><span class="nav-number"></span> <span class="nav-text">另一种使用方法</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一阶段-重新搭建Hexo博客系统"><span class="nav-number">1.</span> <span class="nav-text">第一阶段 重新搭建Hexo博客系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二阶段-迁移博客"><span class="nav-number">2.</span> <span class="nav-text">第二阶段 迁移博客</span></a></li></ol></div>
             
 
           </div>
