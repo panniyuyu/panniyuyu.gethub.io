@@ -171,3 +171,4 @@ docker run -di --name=centos7.2 -p 8088:80 mycentos:7.2
 docker extc -it centos7.1 /bin/bash
 # 浏览器中访问 http://${ip}:8088 验证
 ```
+
