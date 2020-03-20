@@ -167,7 +167,7 @@ menu:
   #commonweal: /404/ || heartbeat
   # msgboard: /msgboard
   about: /about/ || user
-  photos: /photos/ || image
+  #photos: /photos/ || image
 
 # Enable / Disable menu icons / item badges.
 menu_settings:

@@ -169,6 +169,8 @@ RUN npm config set registry https://registry.npm.taobao.org \
 - 使用Dockerfile生成镜像
 - 启动容器 绑定端口 
 - 进入容器启动nginx
+- 使用Dockerfile生成镜像
+- 启动容器 绑定端口
 
 是不是迁移起来非常简单，可以将生成的镜像备份成tar包，在任意的服务器上安装docker后，还原镜像启动容器即可
 
