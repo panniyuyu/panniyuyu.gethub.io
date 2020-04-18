@@ -162,6 +162,13 @@ RUN npm config set registry https://registry.npm.taobao.org \
 
 **最后总结一下需要迁移的步骤**
 
+- git push origin hexo推送博客所有文件
+- 编辑Dockerfile
+- 在Dokerfile目录下git clone 博客文件 再切换hexo分支 重命名为myblog
+- 在Dockerfile目录下编辑nginx.conf文件
+- 使用Dockerfile生成镜像
+- 启动容器 绑定端口 
+- 进入容器启动nginx
 - 使用Dockerfile生成镜像
 - 启动容器 绑定端口
 
@@ -172,3 +179,24 @@ RUN npm config set registry https://registry.npm.taobao.org \
 
 我的相册是参考[这里](https://malizhi.cn/HexoAlbum/)弄得；我将它移至博客文件的hexo分支，一起备份起来，要上传新的文件运行目录中的tool.py脚本，将照片裁剪后上传至github仓库，这时照片就有了URL，在博客中就可以看到了
 
+*发布博客相关*
+
+* docker容器中的 /usr/local/source/_posts/ 目录下的文件名为乱码，下面方法可以解决，但是我这里没有成功，通过tab补全是正常的ls和ll看就有问题
+
+```
+yum -y install convmv
+
+convmv -f GBK -t UTF-8 --notest -r /usr/local/source/_posts/
+```
+
+所有我觉得在宿主机建立文件映射，然后进入docker中hexo g -d更新
+
+* hexo d 会失败，这里要重新生成sshkey
+
+```
+ssh-keygen -t rsa -C "${email}"
+# 拷贝sshkey到github中
+# 配置
+git config --global user.name "${username}"
+git config --global user.email "${email}"  
+```
