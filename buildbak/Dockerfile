@@ -83,4 +83,4 @@ RUN npm install hexo --save \
 && hexo g \
 && chmod 777 /usr/local/myblog/buildbak/run.sh
 # 环境搭建完成，启动脚本
-CMD ["/usr/local/myblog/run.sh"]
+CMD ["/usr/local/myblog/buildbak/run.sh"]
