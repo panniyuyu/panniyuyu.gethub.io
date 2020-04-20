@@ -14,13 +14,26 @@ date: 2020-02-14 21:33:34
 
 #### 在git上备份博客中的文件
 
-hexo d 是将静态文件发布到git上，内容是 public 文件夹中的文件，hexo g 命令会重新生成静态文件；那么其他文件就是我要转移的文件了，将其他文件备份到git仓库中的新分支中 （.gitignore 里给出存放不需要备份的文件，至于为什么后面慢慢了解，本篇重点不在这） 
+hexo d 是将静态文件发布到git上，内容是 public 文件夹中的文件，hexo g 命令会重新生成静态文件；那么其他文件就是我要转移的文件了，将其他文件备份到git仓库中的新分支中 （.gitignore 里给出存放不需要备份的文件，至于为什么后面慢慢了解，本篇重点不在这） [参考这里](https://www.jianshu.com/p/153490a029a5)
 
 ```
-# 新建分支 hexo
+# 在github上新建分支 hexo-backup
 git clone ${git path}
-cd username.github.io
-git batch hexo
+# 备份文件
+cp rf ${username}.github.io/* myblog
+# 除了 .git 以外的文件都删除
+cd ${username}.github.io
+mv .git ../
+rm -rf * 
+mv ../.git .
+# 复制刚刚备份的文件过来
+cp rf ../myblog/* ./
+# 准备gitignore 文件内容下面附
+vim .gitignore
+# 删除主题文件中的.git
+rm -rf /themes/next/.git                        
+
+# 更新分支
 git add .
 git commit -m '初次提交'
 git push origin hexo
@@ -29,22 +42,18 @@ rm -rf *
 git add .
 git commit -m '删除文件'
 git push origin hexo
-
-# 这时候在username.github.io的文件夹下就有了.git文件，将其拷贝的博客目录中
-mv .git /usr/local/myblog
-cd /usr/local/myblog
-git add .
-git commit -m '备份博客文件'
-git push origin hexo
-
-# 在 themes/next/ 目录下的部分文件没得了，博客里的相册功能依赖这里的文件，需要处理一下
-rm -rf /usr/local/myblog/themes/next/.gitignore
-cd /usr/local/myblog
-git add .
-git commit -m 'next主题相关文件'
-git push origin hexo
 ```
 
+```
+# .gitignore 文件内容
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+```
 到这里已经将自己博客下面的文件都提交到git的hexo分支中了
 
 #### 进入docker容器中还原
@@ -117,13 +126,6 @@ RUN yum update -y && yum install -y zlib-devel bzip2-devel openssl-devel ncurses
 # 迁移博客 由于clone速度极其慢，改用本地先clone好复制过去
 && rm -rf /usr/local/myblog
 COPY myblog /usr/local/myblog/
-# && cd /usr/local \
-# && git clone git@github.com:panniyuyu/panniyuyu.github.io.git \
-# && cd /usr/local/panniyuyu.github.io \
-# && git checkout hexo \
-# 由于我已经有myblog的文件夹了这离要删除一下
-# && rm -rf /usr/local/myblog \
-# && mv /usr/local/panniyuyu.github.io /usr/local/myblog \
 
 # 安装package.json中的依赖
 # 修改下载源，安装更快
@@ -146,7 +148,7 @@ RUN npm config set registry https://registry.npm.taobao.org \
 && npm install hexo-renderer-stylus --save \
 && npm install hexo-server --save \
 && npm install hexo-tag-cloud --save \
-&& npm install hexo-wordcoun --save \
+&& npm install hexo-wordcount --save \
 
 # 重新生成静态文件
 && cd /usr/local/myblog \
@@ -200,3 +202,4 @@ ssh-keygen -t rsa -C "${email}"
 git config --global user.name "${username}"
 git config --global user.email "${email}"  
 ```
+
