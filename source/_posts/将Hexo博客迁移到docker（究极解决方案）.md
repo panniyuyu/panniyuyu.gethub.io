@@ -160,7 +160,7 @@ docker inspect --format='{{.NetworkSettings.IPAddress}}' myblog
 
 修改nginx.conf 将请求转发到docker的4000端口，重启nginx容器，完美结束
 
-每次修改或者新增文件，重启hexo容器即可，最后别忘了提交文件到github中做备份 
+每次修改或者新增文件，重启hexo容器就可以了，最后别忘了提交文件到github中做备份 
 
 后续
 
