@@ -1,7 +1,7 @@
 title: Arrays
 author: YyWang
-tags: jdk
-catagories: jdk
+tags: Java
+catagories: Java
 date: 2019-07-26 19:31:27
 ---
 ### Arrays

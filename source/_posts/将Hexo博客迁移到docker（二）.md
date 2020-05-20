@@ -1,7 +1,7 @@
 title: 将Hexo博客迁移到docker（二）
 author: YyWang
-tags: docker
-categories: docker
+tags: 容器
+categories: 容器
 date: 2020-02-14 21:33:34
 ---
 本篇将进行迁移的第二阶段，主要步骤为

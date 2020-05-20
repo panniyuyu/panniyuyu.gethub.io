@@ -1,8 +1,8 @@
 title: 将Hexo博客迁移到docker中（总）
 author: YyWang
 date: 2020-02-13 10:20:45
-tags: Docker
-categories: Docker
+tags: 容器
+categories: 容器
 ---
 博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。
 

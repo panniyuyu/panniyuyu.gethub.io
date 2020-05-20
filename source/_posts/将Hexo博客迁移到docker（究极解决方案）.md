@@ -1,8 +1,8 @@
 title: 将Hexo博客迁移到docker中（究极解决方案）
 author: YyWang
 date: 2020-04-19 08:47:36
-tags: Docker
-categories: Docker
+tags: 容器
+categories: 容器
 ---
 
 前两个阶段是两个月前的试验版本，只是在本机上用docker模拟并没有真正做迁移，然而在真正迁移的过程中，虽然可以完整迁移，但是体验不友好，我改进了迁移方案，首先总结一下缺点吧
@@ -158,7 +158,7 @@ docker run -di -v /usr/local/temp/myblog/source/_posts/:/usr/local/myblog/source
 docker inspect --format='{{.NetworkSettings.IPAddress}}' myblog
 ```
 
-修改nginx.conf 将请求转发到docker的4000端口，重启nginx容器，完美结束
+修改nginx.conf 将请求转发到docker的4000端口，重启nginx容器，完美结束，最后把阿里云上的域名的规则修改为新的服务器的ip，成了
 
 每次修改或者新增文件，重启hexo容器就可以了，最后别忘了提交文件到github中做备份 
 

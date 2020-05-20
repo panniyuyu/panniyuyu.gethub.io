@@ -1,8 +1,8 @@
 title: StringUtils
 author: YyWang
 date: 2019-07-26 19:32:04
-tags: utils
-catagories: utils
+tags: Java
+catagories: Java
 ---
 ## StringUtils
 + 工作中很多操作字符串的操作，使用到了工具类这里总结下，org.apache.commons.lang3包下的

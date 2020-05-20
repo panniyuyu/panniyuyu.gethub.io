@@ -1,8 +1,8 @@
 title: ArrayList
 author: YyWang
 date: 2019-07-26 19:31:05
-tags: collections
-catagories: jdk,collections
+tags: Java
+catagories: Java
 ---
 ### ArrayList
 #### toArray(T[] a)

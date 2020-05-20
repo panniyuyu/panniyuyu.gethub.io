@@ -1,8 +1,8 @@
 title: Lambda表达式
 author: YyWang
 date: 2019-08-05 09:06:59
-tags: Java8
-catagories: Java8
+tags: Java
+catagories: Java
 ---
 #### 语法
 包含3个部分：参数 -> 表达式/代码块
