@@ -1,0 +1,23 @@
+title: 蓦然回首servlet
+author: YyWang
+tags: Java
+categories: Java
+date: 2020-06-11 17:16:07
+---
+
+听到Servlet我既熟悉又陌生，我第一次接触还是在2013年，当时对于课程设计水平的我来说仅仅有个感性的认识，后来接触了ssh之后好像已经疏远了servlet，我只在写业务逻辑一直到现在，我对于servlet的印象还停留在声明，在web.xml中配置，写mapping这些，说明spring的解耦是真的强👍，让我对servlet的认识止步榆次，今天就回首看看这位“老朋友”，就大概梳理一下吧
+
+* Servlet是一个接口，服务器用来处理Http的请求的，接口中主要service方法用来处理http请求，init和destroy方法表示servlet初始化和销毁是调用，总结一句话来说，servlet是一种规范，是服务器处理Http请求的规范。
+
+* Tomcat就是实现servlet规范(接口)的一个🌰，Tomcat中实现了servlet容器用来管理servlet，当收到Http请求后将请求封装成request对象，并根据请求的信息找到对应servlet(web.xml)，将请求交给对应的servlet处理，并将处理结果的response对象转化成Http的协议返回给浏览器
+
+![upload successful](/images/servlet.png)
+
+0. 叫容器的就可以理解为字面意思，用来存放一类东西；web容器里存储web应用，Servlet容器里存储Servlet，Spring容器存放bean等等等等
+1. Tomcat就是一个web容器，其中包含多个web应用，每个应用在Tomcat启动时都会初始化一个servlet容器，用来保存应用下的servlet；Tomcat启动后会监听在8080端口，等待接收请求的到来，在收到请求后根据请求信息首先到想要访问的目标web应用中的web.xml文件里找到目标Servlet，并将Http请求封装成request对象交给Servlet处理（容器中如果没有相应的servlet就会先初始化--懒加载）
+2. servlet处理请求是调用的service方法，在SSM中我们通常会在web.xml中配置springMVC的DispatcherServlet用来处理所有请求(servletMapping为*)，这个servlet根据请求对象，将这个request封装成Spring框架中的request对象，从SpringMVC中找到对应Controller处理
+	* a. 当初始化这个servlet会触发初始化SpringMVC容器，SpringMVC容器会初始化Spring容器，并将Spring容器设置为自己的父容器，这时候就是熟悉的Spring容器的加载
+	* b. 这里SpringMVC容器里管理的时ControllerBean，Spring容器中管理端的是ServiceBean和DAOBean这些，（这些bean是创建顺序我还没研究，挖坑→_→）由于是父子关系SpringMVC可以访问Spring容器中的bean，反过来就不可以
+3. 这步就是熟悉的Controller层调用Spring容器中的Service逻辑，在调用DAO层逻辑持久化，将结果response返回给SpringMVC
+4. SpringMVC将response对象转为servlet规范里的response对象返回给servlet
+5. Servlet将response转化为Http的响应交给Web容器Tomcat，最终由Tomcat返回给浏览器

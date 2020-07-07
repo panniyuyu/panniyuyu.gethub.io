@@ -6,7 +6,7 @@ date: 2020-03-20 15:38:43
 ---
 废话不说，直接上图
 
-![upload successful](/images/pasted-33.png)
+![upload successful](/images/一张图看懂CPU.png)
 
 CPU可以拆解为三个部分
 
