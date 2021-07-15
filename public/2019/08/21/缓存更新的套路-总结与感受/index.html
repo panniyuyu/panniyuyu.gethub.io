@@ -127,7 +127,7 @@
 <meta property="og:site_name" content="YyWang&#39;s Blog">
 <meta property="og:description" content="注： 本文是阅读 [缓存更新的套路] (https://coolshell.cn/articles/17416.html) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读 经典方法 – Cache Aside Pattern 读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中 写操作：先写MySQL，成功后删除Redis中的数据  为什么这样的方案会">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-20T08:22:02.333Z">
+<meta property="og:updated_time" content="2021-07-13T12:27:08.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓存更新的套路 总结与感受">
 <meta name="twitter:description" content="注： 本文是阅读 [缓存更新的套路] (https://coolshell.cn/articles/17416.html) 一文的总结，本文是以经常用到的Redis+MySQL的角度解读 经典方法 – Cache Aside Pattern 读操作：先从Redis中获取，没有命中则从MySQL中获取，最后更新到Redis中 写操作：先写MySQL，成功后删除Redis中的数据  为什么这样的方案会">
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-20 16:22:02" itemprop="dateModified" datetime="2020-03-20T16:22:02+08:00">2020-03-20</time>
+                <time title="修改时间：2021-07-13 20:27:08" itemprop="dateModified" datetime="2021-07-13T20:27:08+08:00">2021-07-13</time>
               
             
           </span>
@@ -531,9 +531,9 @@
 <p>综上所述，虽然经典方法在场景3略有瑕疵，但依然经典可用，因为其简单，有效，错误少</p>
 <h3 id="Read-Write-Through-Pattern"><a href="#Read-Write-Through-Pattern" class="headerlink" title="Read/Write Through Pattern"></a>Read/Write Through Pattern</h3><ul>
 <li>读操作：Redis命中直接返回；没有命中从MySQL中读取后更新到Redis中</li>
-<li>写操作：Redis中命中更新Redis；没有命中更新MySQL</li>
+<li>写操作：Redis中命中更新Redis,在同步的更新到MySQL；没有命中更新MySQL</li>
 </ul>
-<p>这种模式写操作只针对于一个数据库（MySQL或者Redis），读数据时在Redis中没有命中会从MySQL中读取到Redis中，长时间运行后大部分数据都会在Redis中命中，写操作也会针对于Redis，相当于是强依赖于Redis，弱依赖甚至不依赖于MySQL，这么看来这种方式是最高效的，但是有一个致命的缺点，数据可能会丢失，由于强依赖于Redis中的数据，同样强依赖于Redis的高可用性，当Redis的数据丢失没有很好的灾备的话，数据就没了，这时如果想通过MySQL恢复几乎是不可能的了。总结一下，这种模式有利有弊，具体使用场景需要针对于具体的业务场景，我认为如果有比较好的Redis高可用和灾备的策略，这种模式还是非常好用的。</p>
+<p>这种模式写操作主要依赖一个数据源（MySQL或者Redis），读数据时在Redis中没有命中会从MySQL中读取到Redis中，长时间运行后大部分数据都会在Redis中命中，写操作也会针对于Redis并由Redis同步的进行写入MySQL，相当于是强依赖于Redis，弱依赖甚至不依赖于MySQL，至于为什么未命中不直接写Redis还没想明白~</p>
 <h3 id="Write-Behind-Caching-Pattern"><a href="#Write-Behind-Caching-Pattern" class="headerlink" title="Write Behind Caching Pattern"></a>Write Behind Caching Pattern</h3><ul>
 <li>读操作：Redis命中直接返回；没有命中则从MySQL中获取数据返回</li>
 <li>写操作：无论Redis命中与否都先更新Redis，接着异步更新MySQL中的数据</li>
@@ -799,7 +799,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -887,9 +887,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1184,7 +1182,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Istio/">Istio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hugo/">hugo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
         </div>
       </div>
@@ -1202,7 +1200,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>

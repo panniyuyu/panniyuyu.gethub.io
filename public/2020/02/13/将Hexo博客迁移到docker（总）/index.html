@@ -120,14 +120,14 @@
 
 
   <meta name="description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
-<meta name="keywords" content="Docker">
+<meta name="keywords" content="容器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将Hexo博客迁移到docker中（总）">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/将Hexo博客迁移到docker（总）/index.html">
 <meta property="og:site_name" content="YyWang&#39;s Blog">
 <meta property="og:description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-20T08:22:02.333Z">
+<meta property="og:updated_time" content="2021-07-13T12:27:08.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将Hexo博客迁移到docker中（总）">
 <meta name="twitter:description" content="博客已经运行了大半年了，马上就要到期了，我得着手把搭建的博客备份一下了，续费很贵的话我得找一个便宜的用（我就是一个抠门怪哈哈），最简单的就是做系统的镜像，这也太low了吧。当下流行的是容器技术，决定把先把博客迁移到docker中，如果要换服务器的话直接备份docker就好了呀。 难点：搭建博客的时间过去很久，没有记录，完全忘了如何搭建，不知道都需要迁移哪些文件而且我还搞了很多花里胡哨的东西，这些东">
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-20 16:22:02" itemprop="dateModified" datetime="2020-03-20T16:22:02+08:00">2020-03-20</time>
+                <time title="修改时间：2021-07-13 20:27:08" itemprop="dateModified" datetime="2021-07-13T20:27:08+08:00">2021-07-13</time>
               
             
           </span>
@@ -471,7 +471,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
 
                 
                 
@@ -535,6 +535,7 @@
 <li>在docker容器中重新搭建Hexo博客系统并记录步骤（启动容器进行端口映射 8088:80，在公网验证）</li>
 <li>根据记录的步骤编写Dockerfile，生成镜像（启动容器进行端口映射 8088:80 在公网验证）</li>
 </ul>
+<p>见系列文章 <em>将Hexo博客迁移到docker（一）</em></p>
 <h4 id="第二阶段-迁移博客"><a href="#第二阶段-迁移博客" class="headerlink" title="第二阶段 迁移博客"></a>第二阶段 迁移博客</h4><ul>
 <li>总结需要的文件</li>
 <li>拷贝文件到容器中</li>
@@ -543,6 +544,9 @@
 <li>验证成功后，将宿主NGINX端口映射到docker容器中</li>
 </ul>
 <p>最终将容器打包成tar做备份，或者将镜像提交到仓库中直接拉取即可，非常完美</p>
+<p>见系列文章 <em>将Hexo博客迁移到docker（二）</em></p>
+<h4 id="究极解决方案"><a href="#究极解决方案" class="headerlink" title="究极解决方案"></a>究极解决方案</h4><p>见系列文章 <em>将Hexo博客迁移到docker（究极解决方案）</em></p>
+<h4 id="展望与未来"><a href="#展望与未来" class="headerlink" title="展望与未来"></a>展望与未来</h4><p>未来可以搞到k8s上面，通过Deployment让hexo和nginx高可用，后续怎么设计一下，持续更新中</p>
 
       
     </div>
@@ -623,7 +627,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+            <a href="/tags/容器/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
           
         </div>
       
@@ -778,7 +782,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -866,9 +870,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1146,7 +1148,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一阶段-重新搭建Hexo博客系统"><span class="nav-number">1.</span> <span class="nav-text">第一阶段 重新搭建Hexo博客系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二阶段-迁移博客"><span class="nav-number">2.</span> <span class="nav-text">第二阶段 迁移博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一阶段-重新搭建Hexo博客系统"><span class="nav-number">1.</span> <span class="nav-text">第一阶段 重新搭建Hexo博客系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二阶段-迁移博客"><span class="nav-number">2.</span> <span class="nav-text">第二阶段 迁移博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#究极解决方案"><span class="nav-number">3.</span> <span class="nav-text">究极解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#展望与未来"><span class="nav-number">4.</span> <span class="nav-text">展望与未来</span></a></li></ol></div>
             
 
           </div>
@@ -1163,7 +1165,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Istio/">Istio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hugo/">hugo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
         </div>
       </div>
@@ -1181,7 +1183,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>

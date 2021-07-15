@@ -127,7 +127,7 @@
 <meta property="og:description" content="I/O 进程或线程会产生I/O，后面都以线程为例，真正操作I/O的是操作系统，也就是说线程线程向操作系统发送I/O请求，由操作系统来完成I/O执行，整个过程为应用程序的I/O调用； I/O调用的过程就是将进程中（用户空间）的数据输出到进程外部的的空间（系统空间），或者是将进程外部空间（系统空间）的数据输入到进程中（用户空间）；例如一个输入类型的I/O调用，线程首先向操作系统请求外部数据，操作系统将">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/pasted-23.png">
-<meta property="og:updated_time" content="2020-03-20T08:22:02.223Z">
+<meta property="og:updated_time" content="2021-07-13T12:27:08.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阻塞非阻塞，同步异步，网络I&#x2F;O模型概念">
 <meta name="twitter:description" content="I/O 进程或线程会产生I/O，后面都以线程为例，真正操作I/O的是操作系统，也就是说线程线程向操作系统发送I/O请求，由操作系统来完成I/O执行，整个过程为应用程序的I/O调用； I/O调用的过程就是将进程中（用户空间）的数据输出到进程外部的的空间（系统空间），或者是将进程外部空间（系统空间）的数据输入到进程中（用户空间）；例如一个输入类型的I/O调用，线程首先向操作系统请求外部数据，操作系统将">
@@ -455,7 +455,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-20 16:22:02" itemprop="dateModified" datetime="2020-03-20T16:22:02+08:00">2020-03-20</time>
+                <time title="修改时间：2021-07-13 20:27:08" itemprop="dateModified" datetime="2021-07-13T20:27:08+08:00">2021-07-13</time>
               
             
           </span>
@@ -518,13 +518,12 @@
 <li>阻塞和非阻塞；等待I/O数据就绪是否可以做其他操作；一个线程请求I/O并且I/O数据未就绪，如果线程会一直等待不会做其他事情这种方式为阻塞，如果线程立即收到I/O数据未就绪的返回值，并不需要一直等待这个方式为非阻塞，通常是轮询去访问I/O数据是否就绪，虽然没有一直等也是需要不断去询问；</li>
 </ul>
 <h4 id="同步异步"><a href="#同步异步" class="headerlink" title="同步异步"></a>同步异步</h4><ul>
-<li>同步和异步；可以类比线程的同步和异步，同步必须拿到I/O数据才能进行后面的操作，有很强顺序性，没有I/O数据就不能完成后面的操作，而异步不需要拿到I/O数据，去做别的操作没有顺序性；或者我觉得是不是可以这么理解（I/O数据从内核空间到用户空间拷贝是用户线程还是内核线程；同步在I/O数据就绪后用户线程自己将数据拷贝到用户空间；异步不关心I/O数据是否就绪，只是发去I/O请求有内核线程将数据拷贝到用户空间再通知给用户线程）</li>
+<li>同步和异步；可以类比线程的同步和异步，同步必须拿到I/O数据才能进行后面的操作，有很强顺序性，没有I/O数据就不能完成后面的操作，而异步不需要拿到I/O数据，去做别的操作没有顺序性；或者我觉得是不是可以这么理解</li>
 <li>我来理解一下：简单来说同步异步的区别在于是否需要很强的顺序性；就是说同步异步区别在于用户线程是否需要拿到I/O数据再进行后面的操作，同步必须要用到这部分数据，I/O数据没有就绪就一直会等待，而异步不需要用到这部分数据，仅仅发送I/O请求等待操作系统通知即可，（这里同样提了等待，和阻塞的等待差不多都是等待I/O数据是否就绪，同步异步的关注点是是否需要等待I/O数据就绪完成下面的操作，类比于线程的同步和异步；而阻塞的关注点是等待I/O数据就绪的过程是否是一直在死等还是在做其他操作，非阻塞就是没有在死等，这段时间可以做其他的操作但是通常我们都会不断去询问I/O数据是否就绪）</li>
-<li>总结：上面同步异步给了两种不同的解释，我觉得不冲突都可以理解，看哪一种好理解就用哪一种吧，后续两种解释都会尝试说明一下，觉得混乱就看其中一种吧，括号里或者括号外</li>
 </ul>
 <h4 id="组合概念"><a href="#组合概念" class="headerlink" title="组合概念"></a>组合概念</h4><ul>
-<li>同步阻塞；线程发起I/O请求，I/O数据未就绪线程等待，这是阻塞，拿到I/O数据之后才进行进一步操作（I/O数据就绪后用户线程从系统空间拷贝数据到用户空间），这是同步；从程序的角度来看线程一直阻塞直到I/O数据就绪</li>
-<li>同步非阻塞；线程发起I/O请求，I/O数据未就绪会立即收到一个返回值不用等待，这是非阻塞，拿到I/O数据之后才进行进一步操作（I/O数据就绪用户线程从系统空间拷贝数据到用户空间），这是同步；这里虽然不需要等待I/O数据就绪，但是由于是同步的，用户线程必须拿到I/O数据（数据需要用户线程来拷贝），此时由于I/O数据未就绪，用户线程无法对数据进行拷贝用户线程只能通过轮询的方式去询问I/O数据是否就绪，再进行下一步操作；从程序的角度来看线程只是卡在了等待I/O数据就绪这里，不会阻塞，此时可以去做其他的操作，只是通常是去做询问I/O数据是否就绪的操作</li>
+<li>同步阻塞；线程发起I/O请求，I/O数据未就绪线程等待，这是阻塞，拿到I/O数据之后才进行进一步操作，这是同步；从程序的角度来看线程一直阻塞直到I/O数据就绪</li>
+<li>同步非阻塞；线程发起I/O请求，I/O数据未就绪会立即收到一个返回值不用等待，这是非阻塞，拿到I/O数据之后才进行进一步操作，这是同步；这里虽然不需要等待I/O数据就绪，但是由于是同步的，用户线程必须拿到I/O数据，此时由于I/O数据未就绪，用户线程无法对数据进行拷贝用户线程只能通过轮询的方式去询问I/O数据是否就绪，再进行下一步操作；从程序的角度来看线程只是卡在了等待I/O数据就绪这里，不会阻塞，此时可以去做其他的操作，只是通常是去做询问I/O数据是否就绪的操作</li>
 <li>异步阻塞；其实这种情况是不存在的，异步和阻塞是矛盾的；</li>
 <li>异步非阻塞；用户线程发起I/O请求后，无须关心I/O数据是否就绪，待I/O数据就绪后由操作系统将数据拷贝到用户空间，再向用户线程发送通知进行下一步操作；从程序的角度看现场不会阻塞</li>
 </ul>
@@ -780,7 +779,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -868,9 +867,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1165,7 +1162,7 @@
         <h3 class="widget-title">Tag Cloud</h3>
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collections/">collections</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils/">utils</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Istio/">Istio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hugo/">hugo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容器/">容器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活杂谈/">生活杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
         </div>
       </div>
@@ -1183,7 +1180,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">晋ICP备 - 19004725号 </a>&copy; 2019 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
